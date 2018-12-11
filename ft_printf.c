@@ -6,13 +6,13 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 16:10:34 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/11 19:32:19 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/12/11 19:40:01 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		parse_flags(t_parser *p, char *format)
+int		parse_flags(t_parser *p, const char *format)
 {
 	while (*format)
 	{
@@ -26,23 +26,24 @@ int		parse_flags(t_parser *p, char *format)
 			p->zero_padded = 1;
 		format++;
 	}
+	return (1);
 }
 
-int		process(va_list args, char *format)
+int		process(va_list args, const char *format)
 {
-	int		ret;
+	int			ret;
 	t_parser	*p;
 
 	p = malloc(sizeof(t_parser));
 	ret = 0;
 	while (*format)
 	{
-		ft_putchar(*format);
 		if (*format == '%')
 		{
 			format++;
 			parse_flags(p, format);
 		}
+		ft_putchar(*format);
 		format++;
 		ret++;
 	}
@@ -62,6 +63,7 @@ int		ft_printf(const char *format, ...)
 
 int		main()
 {
-	ft_printf("salut", "1", "2", "3");
+	// printf("%05dsalut\n");
+	ft_printf("%05dsalut");
 	return (0);
 }
