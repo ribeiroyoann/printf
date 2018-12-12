@@ -3,29 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 16:10:34 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/11 19:40:01 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/12/12 14:14:56 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		parse_flags(t_parser *p, const char *format)
+int		parser(t_parser *p, char **format)
 {
-	while (*format)
-	{
-		if (*format == '-')
-			p->left_justify = 1;
-		else if (*format == '+')
-			p->plus = 1;
-		else if (*format == ' ')
-			p->space = 1;
-		else if (*format == '0')
-			p->zero_padded = 1;
-		format++;
-	}
+	parse_flags(p, format);
+	printf("1[%c]\n", **format);
+	parse_width(p, format);
+	printf("2[%c]\n", **format);
+	parse_precision(p, format);
+	printf("3[%c]\n", **format);
 	return (1);
 }
 
@@ -41,12 +35,13 @@ int		process(va_list args, const char *format)
 		if (*format == '%')
 		{
 			format++;
-			parse_flags(p, format);
+			parser(p, (char **)&format);
 		}
 		ft_putchar(*format);
 		format++;
 		ret++;
 	}
+	print_parser(p);
 	return (ret);
 }
 
@@ -61,9 +56,9 @@ int		ft_printf(const char *format, ...)
 	return (ret);
 }
 
-int		main()
+int		main(int argc, char **argv)
 {
-	// printf("%05dsalut\n");
-	ft_printf("%05dsalut");
+	// printf("%5d\n", 42);
+	ft_printf("%0-5.salut");
 	return (0);
 }
