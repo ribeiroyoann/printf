@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 13:53:03 by yoann             #+#    #+#             */
-/*   Updated: 2018/12/12 17:53:30 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/12 20:31:51 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int		parse_flags(t_parser *p, char **format)
 {
+	(*format)++;
 	while (ft_strpbrk(*format, "-+ 0#"))
 	{
 		if (**format == '-')

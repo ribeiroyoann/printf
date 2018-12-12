@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 15:57:50 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/12 19:35:51 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/12 20:38:07 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,6 @@
 #define CYN   "\x1B[36m"
 #define WHT   "\x1B[37m"
 #define RESET "\x1B[0m"
-
-enum		length
-	{
-		NONE, HH, H, L, LL
-	};
 
 #define NONE	(1 << 0)
 #define HH		(1 << 1)
@@ -68,7 +63,8 @@ int		parse_length(t_parser *p, char **format);
 ** -------- HANDLERS --------
 */
 
-int		handle_int(t_parser *p, va_list args);
+t_jumptable	init_table(char c);
+int			handle_int(t_parser *p, va_list args);
 
 /*
 ** UTILS

@@ -6,16 +6,11 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 12:47:12 by yoann             #+#    #+#             */
-/*   Updated: 2018/12/12 17:04:33 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/12 20:45:28 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-// void	init_parser(t_parser *p)
-// {
-
-// }
 
 char	*ft_strpbrk(const char *s1, const char *s2)
 {
@@ -54,4 +49,14 @@ void printBits(size_t const size, void const * const ptr)
         }
     }
     puts("");
+}
+
+unsigned int        nb_len(int n)
+{
+    unsigned int    count;
+
+    count = 1;
+    while (n /= 10)
+        count++;
+    return (count);
 }

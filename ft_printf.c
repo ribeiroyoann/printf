@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 16:10:34 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/12 19:17:33 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/12 20:49:18 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int		parser(t_parser *p, char **format)
 	parse_precision(p, format);
 	// printf("3[%c]\n", **format);
 	parse_length(p, format);
-	printf("4[%c]\n", **format);
 	return (0);
 }
 
@@ -29,23 +28,27 @@ int		process(va_list args, const char *format)
 {
 	int			ret;
 	t_parser	*p;
+	t_jumptable	jt;
 
 	p = malloc(sizeof(t_parser));
 	p->l = 0;
 	ret = 0;
-	while (*format)
+	while (*format != '\0')
 	{
 		if (*format == '%')
 		{
-			format++;
 			parser(p, (char **)&format);
-			// ret = handler(args, )
+			jt = init_table(*format);
+			if (jt)
+				jt(p, args);
 		}
-		ft_putchar(*format);
+		else
+		{
+			ft_putchar(*format);
+			ret++;
+		}
 		format++;
-		ret++;
 	}
-	print_parser(p);
 	return (ret);
 }
 
@@ -63,6 +66,6 @@ int		ft_printf(const char *format, ...)
 int		main(int argc, char **argv)
 {
 	// printf("%5d\n", 42);
-	ft_printf("%dsalut");
+	ft_printf("%d", 42);
 	return (0);
 }
