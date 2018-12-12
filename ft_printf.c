@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 16:10:34 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/12 14:14:56 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/12 19:17:33 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 int		parser(t_parser *p, char **format)
 {
 	parse_flags(p, format);
-	printf("1[%c]\n", **format);
+	// printf("1[%c]\n", **format);
 	parse_width(p, format);
-	printf("2[%c]\n", **format);
+	// printf("2[%c]\n", **format);
 	parse_precision(p, format);
-	printf("3[%c]\n", **format);
-	return (1);
+	// printf("3[%c]\n", **format);
+	parse_length(p, format);
+	printf("4[%c]\n", **format);
+	return (0);
 }
 
 int		process(va_list args, const char *format)
@@ -29,6 +31,7 @@ int		process(va_list args, const char *format)
 	t_parser	*p;
 
 	p = malloc(sizeof(t_parser));
+	p->l = 0;
 	ret = 0;
 	while (*format)
 	{
@@ -36,6 +39,7 @@ int		process(va_list args, const char *format)
 		{
 			format++;
 			parser(p, (char **)&format);
+			// ret = handler(args, )
 		}
 		ft_putchar(*format);
 		format++;
@@ -59,6 +63,6 @@ int		ft_printf(const char *format, ...)
 int		main(int argc, char **argv)
 {
 	// printf("%5d\n", 42);
-	ft_printf("%0-5.salut");
+	ft_printf("%dsalut");
 	return (0);
 }
