@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+         #
+#    By: yoann <yoann@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/10 11:13:42 by yoribeir          #+#    #+#              #
-#    Updated: 2018/11/19 17:09:25 by yoribeir         ###   ########.fr        #
+#    Updated: 2018/12/13 11:57:57 by yoann            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,6 +80,7 @@ FILES =	ft_memset.c \
 		ft_lstat.c \
 		ft_strndup.c \
 		get_next_line.c \
+		ft_nb_len.c \
 
 OBJ	= $(FILES:%.c=%.o)
 

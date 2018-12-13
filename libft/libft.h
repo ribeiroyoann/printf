@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 16:29:08 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/11/19 18:42:20 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/12/13 11:57:46 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,6 @@ int					ft_lstsize(t_list *lst);
 t_list				*ft_lstat(t_list *lst, unsigned int nbr);
 char				*ft_strndup(char const *src, int n);
 int					get_next_line(const int fd, char **line);
+unsigned int		ft_nb_len(int n);
 
 #endif
