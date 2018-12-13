@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 19:36:58 by yoann             #+#    #+#             */
-/*   Updated: 2018/12/12 20:15:38 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/13 11:52:33 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,16 @@ intmax_t	get_int_length(t_parser *p, va_list args)
 	intmax_t	nbr;
 
 	nbr = va_arg(args, intmax_t);
-	if (p->l == NONE)
+	if (p->f == NONE)
 		return ((int)nbr);
-	else if (p->l == HH)
+	else if (p->f == HH)
 		return ((char)nbr);
-	else if (p->l == H)
+	else if (p->f == H)
 		return((short)nbr);
-	else if (p->l == L)
+	else if (p->f == L)
 		return ((long)nbr);
-	else if (p->l == LL)
+	else if (p->f == LL)
 		return ((long long)nbr);
-	printf("INT LENGTH ERROR\n");
 	return (0);
 }
 

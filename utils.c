@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 12:47:12 by yoann             #+#    #+#             */
-/*   Updated: 2018/12/12 20:45:28 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/13 11:59:45 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,10 @@ void	print_parser(t_parser *p)
 {
 	printf("\n");
 	printf("\n");
-	printf("p->space        %d\n", p->space);
-	printf("p->left_justify %d\n", p->left_justify);
-	printf("p->plus		%d\n", p->plus);
-	printf("p->zero_padded  %d\n", p->zero_padded);
-	printf("p->prefix       %d\n", p->prefix);
-	printf("p->width        %d\n", p->width);
-	printf("p->precision    %d\n", p->precision);
-	printBits(sizeof(p->l), &p->l);
+	printBits(sizeof(p->f), &p->f);
 }
 
-void printBits(size_t const size, void const * const ptr)
+void    printBits(size_t const size, void const * const ptr)
 {
     unsigned char *b = (unsigned char*) ptr;
     unsigned char byte;
@@ -49,14 +42,4 @@ void printBits(size_t const size, void const * const ptr)
         }
     }
     puts("");
-}
-
-unsigned int        nb_len(int n)
-{
-    unsigned int    count;
-
-    count = 1;
-    while (n /= 10)
-        count++;
-    return (count);
 }

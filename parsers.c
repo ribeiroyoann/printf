@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 13:53:03 by yoann             #+#    #+#             */
-/*   Updated: 2018/12/12 20:31:51 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/13 12:08:03 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,21 @@ int		parse_flags(t_parser *p, char **format)
 	while (ft_strpbrk(*format, "-+ 0#"))
 	{
 		if (**format == '-')
-			p->left_justify = 1;
+			p->f |= LEFT_ALIGN;
 		else if (**format == '+')
-			p->plus = 1;
+			p->f |= PLUS;
 		else if (**format == ' ')
-			p->space = 1;
+			p->f |= SPACE;
 		else if (**format == '0')
-			p->zero_padded = 1;
+			p->f |= ZERO_FILL;
 		else if (**format == '#')
-			p->prefix = 1;
+			p->f |= PREFIX;
 		(*format)++;
 	}
-	if (p->left_justify)
-		p->zero_padded = 0;
+	if (p->f & LEFT_ALIGN)
+		p->f &= ~ZERO_FILL;
+	if (p->f & PLUS)
+		p->f &= ~SPACE;
 	return (1);
 }
 
@@ -75,12 +77,12 @@ int		parse_length(t_parser *p, char **format)
 			if (*(*format + 1) == 'h')
 			{
 				*format += 2;
-				p->l |= HH;
+				p->f |= HH;
 			}
 			else
 			{
 				*format += 1;
-				p->l |= H;
+				p->f |= H;
 			}
 		}
 		if (**format == 'l')
@@ -88,16 +90,16 @@ int		parse_length(t_parser *p, char **format)
 			if (*(*format + 1) == 'l')
 			{
 				*format += 2;
-				p->l |= LL;
+				p->f |= LL;
 			}
 			else
 			{
 				*format += 1;
-				p->l |= L;
+				p->f |= L;
 			}
 		}
 	}
-	if (!p->l)
-		p->l |= NONE;
+	else
+		p->f |= NONE;
 	return (1);
 }

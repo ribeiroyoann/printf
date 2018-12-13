@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 15:57:50 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/12 20:38:07 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/13 12:02:18 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,23 +29,25 @@
 #define WHT   "\x1B[37m"
 #define RESET "\x1B[0m"
 
-#define NONE	(1 << 0)
-#define HH		(1 << 1)
-#define H		(1 << 2)
-#define L		(1 << 3)
-#define LL		(1 << 4)
+
+
+#define	LEFT_ALIGN	(1 << 0)
+#define	SPACE 		(1 << 1)
+#define	PLUS		(1 << 2)
+#define	ZERO_FILL	(1 << 3)
+#define	PREFIX		(1 << 4)
+
+#define NONE	(1 << 5)
+#define HH		(1 << 6)
+#define H		(1 << 7)
+#define L		(1 << 8)
+#define LL		(1 << 9)
 
 typedef	struct	s_parser
 {
-	int			left_justify;
-	int			space;
-	int			plus;
-	int			zero_padded;
-	int			prefix;
 	int			width;
 	int			precision;
-	unsigned	char	l;
-
+	short		f;
 }				t_parser;
 
 typedef		int (*t_jumptable)(t_parser *p, va_list args);
