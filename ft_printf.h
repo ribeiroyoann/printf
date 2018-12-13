@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 15:57:50 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/13 12:02:18 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/13 13:11:56 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,14 @@
 #define L		(1 << 8)
 #define LL		(1 << 9)
 
+#define NEG		(1 << 10)
+
 typedef	struct	s_parser
 {
 	int			width;
 	int			precision;
+	int			arg_len;
+	int			neg;
 	short		f;
 }				t_parser;
 

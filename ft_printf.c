@@ -6,11 +6,20 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 16:10:34 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/13 12:08:02 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/13 13:50:56 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void	init_parser(t_parser *p)
+{
+	p->width = 0;
+	p->precision = 0;
+	p->arg_len = 0;
+	p->neg = 0;
+	p->f = 0;
+}
 
 int		parser(t_parser *p, char **format)
 {
@@ -31,7 +40,7 @@ int		process(va_list args, const char *format)
 	t_jumptable	jt;
 
 	p = malloc(sizeof(t_parser));
-	p->f = 0;
+	init_parser(p);
 	ret = 0;
 	while (*format != '\0')
 	{
@@ -49,7 +58,7 @@ int		process(va_list args, const char *format)
 		}
 		format++;
 	}
-	print_parser(p);
+	// print_parser(p);
 	return (ret);
 }
 
@@ -66,7 +75,8 @@ int		ft_printf(const char *format, ...)
 
 int		main(int argc, char **argv)
 {
-	printf("[% +d]\n", 42);
-	// ft_printf("% +d", 42);
+	printf("[%-d]\n", -42);
+	printf("\n\n");
+	ft_printf("%-d", -42);
 	return (0);
 }
