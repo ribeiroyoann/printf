@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 19:36:58 by yoann             #+#    #+#             */
-/*   Updated: 2018/12/13 15:16:18 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/14 15:14:19 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ intmax_t	get_int_length(t_parser *p, va_list args)
 
 // 18446744073709551615 == 20
 
+// p->arg_len	== arg size
+// p->len		== char to print
+// p->pad		== fill
+
 int			handle_int(t_parser *p, va_list args)
 {
 	intmax_t	nbr;
@@ -42,17 +46,6 @@ int			handle_int(t_parser *p, va_list args)
 
 	nbr = get_int_length(p, args);
 	nb_str = ft_itoa(nbr);
-	if (nbr < 0)
-		p->neg = 1;
-	size = p->neg + p->arg_len;
-	if (p->f & PLUS && !p->neg)
-		size++;
-	size = (p->width < size) ? size : p->width;
-
-	if (p->f & LEFT_ALIGN)
-	{
-		
-	}
-
-	return (ft_strlen(ret));
+	
 }
+

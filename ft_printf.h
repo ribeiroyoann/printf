@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 15:57:50 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/13 13:11:56 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/14 15:09:22 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ typedef	struct	s_parser
 	int			precision;
 	int			arg_len;
 	int			neg;
+	int			len;
+	int			pad;
 	short		f;
 }				t_parser;
 
