@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 15:57:50 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/14 15:09:22 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/18 18:08:38 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef	struct	s_parser
 }				t_parser;
 
 typedef		int (*t_jumptable)(t_parser *p, va_list args);
+int			ft_printf(const char *format, ...);
 
 /*
 ** -------- PARSERS --------
@@ -81,5 +82,7 @@ int			handle_int(t_parser *p, va_list args);
 char	*ft_strpbrk(const char *s1, const char *s2);
 void	print_parser(t_parser *p);
 void	printBits(size_t const size, void const * const ptr);
+
+char                *ft_itoa1(t_parser *p, int n);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 12:47:12 by yoann             #+#    #+#             */
-/*   Updated: 2018/12/13 11:59:45 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/18 18:08:15 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,44 @@ void    printBits(size_t const size, void const * const ptr)
         }
     }
     puts("");
+}
+
+unsigned int        nb_len1(int n)
+{
+    unsigned int    count;
+
+    count = 1;
+    while (n /= 10)
+        count++;
+    return (count);
+}
+
+char                *ft_itoa1(t_parser *p, int n)
+{
+    unsigned int    count;
+    unsigned int    nb;
+    unsigned int    i;
+    char            *str;
+
+    count = nb_len1(n);
+    nb = n;
+    if (n < 0)
+    {
+        p->f |= NEG;
+        nb = -n;
+    }
+    if (!(str = ft_strnew(count)))
+        return (0);
+    if (!nb)
+        str[0] = '0';
+    str[count] = '\0';
+    i = 0;
+    while (nb)
+    {
+        str[i++] = nb % 10 + '0';
+        nb /= 10;
+    }
+    // if (n < 0)
+    //     str[0] = '-';
+    return (str);
 }

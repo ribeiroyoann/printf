@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   handle_int.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 19:36:58 by yoann             #+#    #+#             */
-/*   Updated: 2018/12/14 18:53:03 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/18 18:58:13 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#define BUF_SIZE 21
 
 intmax_t	get_int_length(t_parser *p, va_list args)
 {
@@ -31,14 +32,6 @@ intmax_t	get_int_length(t_parser *p, va_list args)
 	return (0);
 }
 
-// 18446744073709551615 == 20
-
-// p->arg_len	== arg size
-// p->len		== char to print
-// p->pad		== fill
-
-#define BUF_SIZE 21
-
 int			handle_int(t_parser *p, va_list args)
 {
 	intmax_t	nbr;
@@ -47,16 +40,15 @@ int			handle_int(t_parser *p, va_list args)
 	int			len;
 	int			idx;
 	int			start_idx;
+	int			i;
 
 	idx = 0;
 	start_idx = idx;
 	len = -1;
 	nbr = get_int_length(p, args);
-	nb_str = ft_itoa(nbr);
-
+	nb_str = ft_itoa1(p, nbr);
 	while (nb_str[++len])
 		buf[len] = nb_str[len];
-	printf("[%s]\n", buf);
 	// ZERO FILL && !LEFT_ALIGN
 	if (!(p->f & LEFT_ALIGN))
 	{
@@ -64,8 +56,7 @@ int			handle_int(t_parser *p, va_list args)
 			buf[len++] = '0';
 	}
 
-
-	int i = len;
+	i = len;
 	if (!(p->f & LEFT_ALIGN) && !(p->f & ZERO_FILL))
 	{
 
@@ -76,7 +67,12 @@ int			handle_int(t_parser *p, va_list args)
 				idx++;
 			}
 	}
-
+	if (p->f & NEG)
+	{
+		len--;
+		buf[len++] = '-';
+	}
+	printf("%s\n", buf);
   	i = 0;
   	while (i < len)
   	{
@@ -85,16 +81,14 @@ int			handle_int(t_parser *p, va_list args)
   		idx++;
   	}
 
-  	if (p->f & LEFT_ALIGN)
-  	{
-  		while (idx - start_idx < p->width)
-  		{
-  			ft_putchar(' ');
-  			idx++;
-  		}
-  	}
-
-	// ft_putstr(buf);
+  	// if (p->f & LEFT_ALIGN)
+  	// {
+  	// 	while (idx - start_idx < p->width)
+  	// 	{
+  	// 		ft_putchar(' ');
+  	// 		idx++;
+  	// 	}
+  	// }
 	return (idx);
 }
 

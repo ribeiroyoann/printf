@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 16:10:34 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/14 18:51:41 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/18 18:57:38 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,9 @@ int		ft_printf(const char *format, ...)
 
 int		main(int argc, char **argv)
 {
-	// printf("%05d", -42);
+	printf(GRN"%5d"RESET, -42);
 	printf("\n\n");
-	ft_printf("%05d", -42);
+	ft_printf("%5d", -42);
+
 	return (0);
 }
