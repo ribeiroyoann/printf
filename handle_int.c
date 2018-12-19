@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 19:36:58 by yoann             #+#    #+#             */
-/*   Updated: 2018/12/19 14:38:59 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/19 15:35:20 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,17 +38,16 @@ int			handle_int(t_parser *p, va_list args)
 	char		*nb_str;
 	char		buf[BUF_SIZE];
 	int			len;
-	int			idx;
-	int			start_idx;
+	int			ret;
 	int			i;
 
-	idx = 0;
-	start_idx = idx;
+	ret = 0;
 	len = -1;
 	nbr = get_int_length(p, args);
 	nb_str = ft_itoa1(p, nbr);
 	while (nb_str[++len])
 		buf[len] = nb_str[len];
+
 	// ZERO FILL && !LEFT_ALIGN
 	if (!(p->f & LEFT_ALIGN))
 	{
@@ -56,7 +55,7 @@ int			handle_int(t_parser *p, va_list args)
 			buf[len++] = '0';
 	}
 	// SIGN
-	if (len && len == p->width)
+	if (len && len == p->width && p->f & NEG)
 		len--;
 	if (p->f & NEG)
 		buf[len++] = '-';
@@ -70,7 +69,7 @@ int			handle_int(t_parser *p, va_list args)
 			{
 				ft_putchar(' ');
 				i++;
-				idx++;
+				ret++;
 			}
 	}
 
@@ -80,18 +79,21 @@ int			handle_int(t_parser *p, va_list args)
   	{
   		ft_putchar(buf[len - i - 1]);
   		i++;
-  		idx++;
+  		ret++;
   	}
 
-  	// if (p->f & LEFT_ALIGN)
-  	// {
-  	// 	while (idx - start_idx < p->width)
-  	// 	{
-  	// 		ft_putchar(' ');
-  	// 		idx++;
-  	// 	}
-  	// }
-	return (idx);
+  	//LEFT JUSTIFY
+  	if (p->f & LEFT_ALIGN)
+  	{
+  		while (i < p->width)
+  		{
+  			ft_putchar(' ');
+  			ret++;
+  			i++;
+  		}
+  	}
+
+	return (ret);
 }
 
 

@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 16:10:34 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/19 14:35:41 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/19 15:34:39 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		process(va_list args, const char *format)
 			parser(p, (char **)&format);
 			jt = init_table(*format);
 			if (jt)
-				jt(p, args);
+				ret += jt(p, args);
 		}
 		else
 		{
@@ -58,7 +58,7 @@ int		process(va_list args, const char *format)
 		}
 		format++;
 	}
-	// print_parser(p);
+	printf("-%d\n", ret);
 	return (ret);
 }
 
@@ -75,9 +75,9 @@ int		ft_printf(const char *format, ...)
 
 int		main(int argc, char **argv)
 {
-	printf(GRN"%5d"RESET, -42);
-	printf("\n\n");
-	ft_printf("%5d", -42);
+	printf("-%d\n", printf("[%-9d]", 12345));
+	printf("\n--------\n");
+	ft_printf("[%-9d]", 12345);
 
 	return (0);
 }
