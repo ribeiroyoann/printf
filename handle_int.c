@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 19:36:58 by yoann             #+#    #+#             */
-/*   Updated: 2018/12/19 15:35:20 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/19 16:47:15 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ intmax_t	get_int_length(t_parser *p, va_list args)
 	intmax_t	nbr;
 
 	nbr = va_arg(args, intmax_t);
-	p->arg_len = ft_nb_len(nbr);
 	if (p->f & NONE)
 		return ((int)nbr);
 	else if (p->f & HH)

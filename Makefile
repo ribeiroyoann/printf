@@ -3,54 +3,35 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+         #
+#    By: yoann <yoann@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/12/11 16:06:44 by yoribeir          #+#    #+#              #
-#    Updated: 2018/12/11 18:39:42 by yoribeir         ###   ########.fr        #
+#    Created: 2018/11/19 12:25:14 by yoribeir          #+#    #+#              #
+#    Updated: 2018/12/19 16:54:13 by yoann            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-C = gcc
-
-NAME = libftprintf.a
-
-FLAGS = -Wall -Wextra -Werror
-
-LIBFT = libft
-
-DIR_S = srcs
-
-DIR_O = obj
-
-HEADER = includes
-
-SOURCES = ft_printf.c
-
-SRCS = $(addprefix $(DIR_S)/,$(SOURCES))
-
-OBJS = $(addprefix $(DIR_O)/,$(SOURCES:.c=.o))
+NAME = ft_printf
+INCLUDES = includes
+LIBS = libft
+LIB = ft
+FLAGS = -Wall -Werror -Wextra
+SRCS = main.c reader.c solver.c board.c utils.c pieces.c
+SRCSREP = srcs
+OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	@make -C $(LIBFT)
-	@cp libft/libft.a ./$(NAME)
-	@ar rc $(NAME) $(OBJS)
-	@ranlib $(NAME)
+%.o: $(SRCSREP)/%.c
+	gcc $(FLAGS) -I$(INCLUDES) -c $^
 
-$(DIR_O)/%.o: $(DIR_S)/%.c $(HEADER)/ft_printf.h
-	@mkdir -p obj
-	@$(CC) $(FLAGS) -I $(HEADER) -o $@ -c $<
+$(NAME): $(OBJS)
+	@make -C libft
+	gcc -g $(FLAGS) -I$(INCLUDES) $^ -L$(LIBS) -l$(LIB) -o $@
 
 clean:
-	@rm -f $(OBJS)
-	@rm -rf $(DIR_O)
-	@make clean -C $(LIBFT)
-
+	rm -f $(OBJS)
+	make clean -C libft
 fclean: clean
-	@rm -f $(NAME)
-	@make fclean -C $(LIBFT)
-
+	make fclean -C libft
+	rm -f $(NAME)
 re: fclean all
-
-.PHONY: fclean re all clean

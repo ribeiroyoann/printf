@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 12:47:12 by yoann             #+#    #+#             */
-/*   Updated: 2018/12/18 18:08:15 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/12/19 16:44:06 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,34 @@ char                *ft_itoa1(t_parser *p, int n)
         str[i++] = nb % 10 + '0';
         nb /= 10;
     }
-    // if (n < 0)
-    //     str[0] = '-';
+    return (str);
+}
+
+char                *itoa_base(t_parser *p, int n, int base)
+{
+    unsigned int    count;
+    unsigned int    nb;
+    unsigned int    i;
+    char            *str;
+    char            *s_base = "0123456789ABCDEF";
+
+    count = nb_len1(n);
+    nb = n;
+    if (n < 0)
+    {
+        p->f |= NEG;
+        nb = -n;
+    }
+    if (!(str = ft_strnew(count)))
+        return (0);
+    if (!nb)
+        str[0] = '0';
+    str[count] = '\0';
+    i = 0;
+    while (nb)
+    {
+        str[i++] = s_base[nb % base];
+        nb /= base;
+    }
     return (str);
 }

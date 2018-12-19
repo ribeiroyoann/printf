@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 15:57:50 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/18 18:08:38 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/12/19 16:52:21 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,9 @@ int		parse_length(t_parser *p, char **format);
 */
 
 t_jumptable	init_table(char c);
+intmax_t	get_int_length(t_parser *p, va_list args);
 int			handle_int(t_parser *p, va_list args);
+int			handle_octal(t_parser *p, va_list args);
 
 /*
 ** UTILS
@@ -84,5 +86,6 @@ void	print_parser(t_parser *p);
 void	printBits(size_t const size, void const * const ptr);
 
 char                *ft_itoa1(t_parser *p, int n);
+char                *itoa_base(t_parser *p, int n, int base);
 
 #endif
