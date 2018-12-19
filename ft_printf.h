@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 15:57:50 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/19 16:52:21 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/19 18:29:09 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,14 @@
 
 #define NEG		(1 << 10)
 
+#define BUF_SIZE 21
+
 typedef	struct	s_parser
 {
 	int			width;
 	int			precision;
-	int			arg_len;
-	int			neg;
 	int			len;
-	int			pad;
+	int			base;
 	short		f;
 }				t_parser;
 
@@ -76,6 +76,7 @@ t_jumptable	init_table(char c);
 intmax_t	get_int_length(t_parser *p, va_list args);
 int			handle_int(t_parser *p, va_list args);
 int			handle_octal(t_parser *p, va_list args);
+int			handle_char(t_parser *p, va_list args);
 
 /*
 ** UTILS
@@ -87,5 +88,6 @@ void	printBits(size_t const size, void const * const ptr);
 
 char                *ft_itoa1(t_parser *p, int n);
 char                *itoa_base(t_parser *p, int n, int base);
+int    			 	get_base(t_parser *p, char c);
 
 #endif

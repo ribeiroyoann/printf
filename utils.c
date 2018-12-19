@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 12:47:12 by yoann             #+#    #+#             */
-/*   Updated: 2018/12/19 16:44:06 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/19 18:45:21 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,4 +109,15 @@ char                *itoa_base(t_parser *p, int n, int base)
         nb /= base;
     }
     return (str);
+}
+
+int     get_base(t_parser *p, char c)
+{
+    if (c == 'd' || c == 'i')
+        return (10);
+    else if (c == 'o')
+        return (8);
+    else if (c == 'x' || c == 'X')
+        return (16);
+    else return (-1);
 }

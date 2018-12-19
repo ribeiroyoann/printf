@@ -1,46 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_octal.c                                     :+:      :+:    :+:   */
+/*   handle_char.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/19 16:44:15 by yoann             #+#    #+#             */
-/*   Updated: 2018/12/19 17:37:30 by yoann            ###   ########.fr       */
+/*   Created: 2018/12/19 17:38:56 by yoann             #+#    #+#             */
+/*   Updated: 2018/12/19 17:47:56 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int			handle_octal(t_parser *p, va_list args)
+int			handle_char(t_parser *p, va_list args)
 {
-	intmax_t	nbr;
-	char		*nb_str;
+	char		chr;
 	char		buf[BUF_SIZE];
 	int			len;
 	int			ret;
 	int			i;
 
 	ret = 0;
-	len = -1;
-	nbr = get_int_length(p, args);
-	nb_str = itoa_base(p, nbr, 8);
-	while (nb_str[++len])
-		buf[len] = nb_str[len];
+	len = 1;
+	chr = (char)va_arg(args, int);
+	buf[0] = chr;
 
-	// ZERO FILL && !LEFT_ALIGN
-	if (!(p->f & LEFT_ALIGN))
-	{
-		while ((p->f & ZERO_FILL) && (len < p->width) && (len < BUFF_SIZE))
-			buf[len++] = '0';
-	}
-	// SIGN
-	if (len && len == p->width && p->f & NEG)
-		len--;
-	if (p->f & NEG)
-		buf[len++] = '-';
-
-	//BASIC WIDTH
 	i = len;
 	if (!(p->f & LEFT_ALIGN) && !(p->f & ZERO_FILL))
 	{

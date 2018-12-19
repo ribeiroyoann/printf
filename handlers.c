@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 17:34:00 by yoann             #+#    #+#             */
-/*   Updated: 2018/12/19 16:52:11 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/19 18:41:13 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ void		set_jumptable(t_jumptable handlers[128])
 {
 	handlers['d'] = &handle_int;
 	handlers['i'] = &handle_int;
-	handlers['o'] = &handle_octal;
+	handlers['o'] = &handle_int;
+	handlers['x'] = &handle_int;
+	handlers['c'] = &handle_char;
 }
 
 t_jumptable	init_table(char c)

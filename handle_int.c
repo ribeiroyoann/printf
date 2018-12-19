@@ -6,12 +6,11 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 19:36:58 by yoann             #+#    #+#             */
-/*   Updated: 2018/12/19 16:47:15 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/19 18:37:52 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#define BUF_SIZE 21
 
 intmax_t	get_int_length(t_parser *p, va_list args)
 {
@@ -43,7 +42,7 @@ int			handle_int(t_parser *p, va_list args)
 	ret = 0;
 	len = -1;
 	nbr = get_int_length(p, args);
-	nb_str = ft_itoa1(p, nbr);
+	nb_str = itoa_base(p, nbr, p->base);
 	while (nb_str[++len])
 		buf[len] = nb_str[len];
 
