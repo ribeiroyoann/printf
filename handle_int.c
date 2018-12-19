@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_int.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 19:36:58 by yoann             #+#    #+#             */
-/*   Updated: 2018/12/18 18:58:13 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/12/19 14:38:59 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,13 @@ int			handle_int(t_parser *p, va_list args)
 		while ((p->f & ZERO_FILL) && (len < p->width) && (len < BUFF_SIZE))
 			buf[len++] = '0';
 	}
+	// SIGN
+	if (len && len == p->width)
+		len--;
+	if (p->f & NEG)
+		buf[len++] = '-';
 
+	//BASIC WIDTH
 	i = len;
 	if (!(p->f & LEFT_ALIGN) && !(p->f & ZERO_FILL))
 	{
@@ -67,12 +73,8 @@ int			handle_int(t_parser *p, va_list args)
 				idx++;
 			}
 	}
-	if (p->f & NEG)
-	{
-		len--;
-		buf[len++] = '-';
-	}
-	printf("%s\n", buf);
+
+	//PRINT BUF
   	i = 0;
   	while (i < len)
   	{
