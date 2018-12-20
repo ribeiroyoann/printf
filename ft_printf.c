@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 16:10:34 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/19 18:46:50 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/20 17:51:20 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int		process(va_list args, const char *format)
 		format++;
 	}
 	printf(" %d\n", ret);
+	print_parser(p);
 	return (ret);
 }
 
@@ -72,9 +73,12 @@ int		ft_printf(const char *format, ...)
 
 int		main(int argc, char **argv)
 {
-	printf(" %d\n", printf("[%x]", 42));
+	int a = 42;
+	int *pa = &a;
+
+	printf(" %d\n", printf("[%5d]", 42));
 	printf("\n--------\n");
-	ft_printf("[%x]", 42);
+	ft_printf("[%5d]", 42);
 
 	return (0);
 }

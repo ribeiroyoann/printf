@@ -1,37 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handlers.c                                         :+:      :+:    :+:   */
+/*   handle_pointer.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/12 17:34:00 by yoann             #+#    #+#             */
-/*   Updated: 2018/12/20 16:04:33 by yoribeir         ###   ########.fr       */
+/*   Created: 2018/12/20 16:00:25 by yoribeir          #+#    #+#             */
+/*   Updated: 2018/12/20 17:50:20 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void		set_jumptable(t_jumptable handlers[128])
+void	print_hexa(int nb)
 {
-	handlers['d'] = &handle_int;
-	handlers['i'] = &handle_int;
-	handlers['o'] = &handle_int;
-	handlers['x'] = &handle_int;
-	handlers['c'] = &handle_char;
-	handlers['p'] = &handle_pointer;
+	char	str[] = "0123456789abcdef";
+
+	if (nb >= 16)
+		print_hexa(nb / 16);
+	ft_putchar(str[nb % 16]);
 }
 
-t_jumptable	init_table(char c)
+int		handle_pointer(t_parser *p, va_list args)
 {
-	t_jumptable		handlers[128] = {NULL};
+	intmax_t	pointer;
 
-	if (!handlers['d'])
-		set_jumptable(handlers);
-	if (ft_isascii(c))
-	{
-		return (handlers[(int)c]);
-	}
-	else
-		return (NULL);
+	pointer = va_arg(args, intmax_t);
+	ft_putstr("0x7fff");
+	print_hexa(pointer);
+	return (1);
 }

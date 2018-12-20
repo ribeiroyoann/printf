@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 15:57:50 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/19 18:29:09 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/20 16:04:48 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,7 @@ intmax_t	get_int_length(t_parser *p, va_list args);
 int			handle_int(t_parser *p, va_list args);
 int			handle_octal(t_parser *p, va_list args);
 int			handle_char(t_parser *p, va_list args);
+int			handle_pointer(t_parser *p, va_list args);
 
 /*
 ** UTILS
