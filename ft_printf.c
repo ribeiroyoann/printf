@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 16:10:34 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/20 17:51:20 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/12/21 18:47:08 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	init_parser(t_parser *p)
 	p->precision = 0;
 	p->f = 0;
 	p->base = 0;
+	p->len = 0;
 }
 
 int		parser(t_parser *p, char **format)
@@ -56,7 +57,6 @@ int		process(va_list args, const char *format)
 		format++;
 	}
 	printf(" %d\n", ret);
-	print_parser(p);
 	return (ret);
 }
 
@@ -76,9 +76,9 @@ int		main(int argc, char **argv)
 	int a = 42;
 	int *pa = &a;
 
-	printf(" %d\n", printf("[%5d]", 42));
+	printf(" %d\n", printf("[%20p]", &a));
 	printf("\n--------\n");
-	ft_printf("[%5d]", 42);
+	ft_printf("[%20p]", &a);
 
 	return (0);
 }

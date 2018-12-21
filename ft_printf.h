@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 15:57:50 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/20 16:04:48 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/12/21 17:42:36 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@
 #define LL		(1 << 9)
 
 #define NEG		(1 << 10)
+#define MINBASE		(1 << 11)
 
 #define BUF_SIZE 21
 
@@ -89,6 +90,7 @@ void	printBits(size_t const size, void const * const ptr);
 
 char                *ft_itoa1(t_parser *p, int n);
 char                *itoa_base(t_parser *p, int n, int base);
+char                *itoa_base_long(t_parser *p, long long n, int base, char *s_base);
 int    			 	get_base(t_parser *p, char c);
 
 #endif

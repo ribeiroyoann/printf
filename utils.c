@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 12:47:12 by yoann             #+#    #+#             */
-/*   Updated: 2018/12/19 18:45:21 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/21 17:47:30 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,34 +54,6 @@ unsigned int        nb_len1(int n)
     return (count);
 }
 
-char                *ft_itoa1(t_parser *p, int n)
-{
-    unsigned int    count;
-    unsigned int    nb;
-    unsigned int    i;
-    char            *str;
-
-    count = nb_len1(n);
-    nb = n;
-    if (n < 0)
-    {
-        p->f |= NEG;
-        nb = -n;
-    }
-    if (!(str = ft_strnew(count)))
-        return (0);
-    if (!nb)
-        str[0] = '0';
-    str[count] = '\0';
-    i = 0;
-    while (nb)
-    {
-        str[i++] = nb % 10 + '0';
-        nb /= 10;
-    }
-    return (str);
-}
-
 char                *itoa_base(t_parser *p, int n, int base)
 {
     unsigned int    count;
@@ -102,6 +74,34 @@ char                *itoa_base(t_parser *p, int n, int base)
     if (!nb)
         str[0] = '0';
     str[count] = '\0';
+    i = 0;
+    while (nb)
+    {
+        str[i++] = s_base[nb % base];
+        nb /= base;
+    }
+    return (str);
+}
+// c39f3ed5fff7 12 + 0x
+
+char                *itoa_base_long(t_parser *p, long long int n, int base, char *s_base)
+{
+    long long int       nb;
+    unsigned int    i;
+    int             maj;
+    char            *str;
+
+    nb = n;
+    if (n < 0)
+    {
+        p->f |= NEG;
+        nb = -n;
+    }
+    if (!(str = ft_strnew(nb_len1(n))))
+        return (0);
+    if (!nb)
+        str[0] = '0';
+    str[nb_len1(n)] = '\0';
     i = 0;
     while (nb)
     {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 13:53:03 by yoann             #+#    #+#             */
-/*   Updated: 2018/12/19 18:35:11 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/21 18:17:36 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int		parse_flags(t_parser *p, char **format)
 	(*format)++;
 	while (ft_strpbrk(*format, "-+ 0#"))
 	{
+		if (ft_isdigit(**format) && **format != '0')
+			break ;
 		if (**format == '-')
 			p->f |= LEFT_ALIGN;
 		else if (**format == '+')
