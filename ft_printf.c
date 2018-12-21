@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 16:10:34 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/21 19:05:34 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/12/21 19:18:29 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int		process(va_list args, const char *format)
 		}
 		format++;
 	}
-	// printf(" %d\n", ret);
+	printf(" %d\n", ret);
 	return (ret);
 }
 
@@ -71,14 +71,14 @@ int		ft_printf(const char *format, ...)
 	return (ret);
 }
 
-// int		main(int argc, char **argv)
-// {
-// 	int a = 42;
-// 	int *pa = &a;
+int		main(int argc, char **argv)
+{
+	int a = 42;
+	int *pa = &a;
 
-// 	printf(" %d\n", printf("[%20p]", &a));
-// 	printf("\n--------\n");
-// 	ft_printf("[%20p]", &a);
+	printf(" %d\n", printf("[%#6o]", 2500));
+	printf("\n--------\n");
+	ft_printf("[%#6o]", 2500);
 
-// 	return (0);
-// }
+	return (0);
+}
