@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 15:57:50 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/21 18:52:01 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/12/21 19:35:19 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int			handle_int(t_parser *p, va_list args);
 int			handle_octal(t_parser *p, va_list args);
 int			handle_char(t_parser *p, va_list args);
 int			handle_pointer(t_parser *p, va_list args);
+int			handle_escape(t_parser *p, va_list args);
 
 /*
 ** UTILS

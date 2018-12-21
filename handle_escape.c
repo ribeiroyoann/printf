@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/21 19:09:41 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/21 19:10:23 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/12/21 19:35:29 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 int		handle_escape(t_parser *p, va_list args)
 {
-	
+	ft_putchar('%');
+	return (1);
 }

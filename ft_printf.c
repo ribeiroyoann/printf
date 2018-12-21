@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 16:10:34 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/21 19:18:29 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/12/21 19:34:37 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,9 +76,9 @@ int		main(int argc, char **argv)
 	int a = 42;
 	int *pa = &a;
 
-	printf(" %d\n", printf("[%#6o]", 2500));
+	printf(" %d\n", printf("%%"));
 	printf("\n--------\n");
-	ft_printf("[%#6o]", 2500);
+	ft_printf("%%");
 
 	return (0);
 }
