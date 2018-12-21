@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 15:57:50 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/21 17:42:36 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/12/21 18:52:01 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@
 #define L		(1 << 8)
 #define LL		(1 << 9)
 
-#define NEG		(1 << 10)
-#define MINBASE		(1 << 11)
+#define NEG		(1 << 11)
+#define MINBASE		(1 << 12)
 
 #define BUF_SIZE 21
 

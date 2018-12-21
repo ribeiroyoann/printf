@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 16:00:25 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/21 18:48:06 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/12/21 18:49:03 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,3 @@ int		handle_pointer(t_parser *p, va_list args)
 			ft_putchar(' ');
 	return (ret);
 }
-
