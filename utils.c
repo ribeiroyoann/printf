@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 12:47:12 by yoann             #+#    #+#             */
-/*   Updated: 2018/12/21 17:47:30 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/12/24 14:05:44 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,13 @@ char                *itoa_base(t_parser *p, int n, int base)
     }
     return (str);
 }
-// c39f3ed5fff7 12 + 0x
+
+//buf[len++] = digit < 10 ? '0' + digit : (flags & FLAGS_UPPERCASE ? 'A' : 'a') + digit - 10;
 
 char                *itoa_base_long(t_parser *p, long long int n, int base, char *s_base)
 {
     long long int       nb;
     unsigned int    i;
-    int             maj;
     char            *str;
 
     nb = n;
@@ -118,6 +118,22 @@ int     get_base(t_parser *p, char c)
     else if (c == 'o')
         return (8);
     else if (c == 'x' || c == 'X')
+    {
+        if (c == 'X')
+            p->f |= CAPSBASE;
         return (16);
+    }
     else return (-1);
+}
+
+char *toUpper(char *str) {
+  size_t len = ft_strlen(str);
+  size_t i;
+
+  for (i = 0; i < len; i++) {
+    if (str[i] >= 'a' && str[i] <= 'z') {
+      str[i] = str[i] - 'a' + 'A';
+    }
+  }
+  return str;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_int.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 19:36:58 by yoann             #+#    #+#             */
-/*   Updated: 2018/12/21 19:30:40 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/12/24 14:26:27 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,14 +49,20 @@ int			handle_int(t_parser *p, va_list args)
 	// ZERO FILL && !LEFT_ALIGN
 	if (!(p->f & LEFT_ALIGN))
 	{
+		while (len < p->precision && len < BUFF_SIZE)
+			buf[len++] = '0';
 		while ((p->f & ZERO_FILL) && (len < p->width) && (len < BUFF_SIZE))
 			buf[len++] = '0';
 	}
 	// SIGN
-	if (len && len == p->width && p->f & NEG)
+	if (len && len == p->width && ((p->f & NEG) || (p->f & PLUS) || (p->f & SPACE)))
 		len--;
 	if (p->f & NEG)
 		buf[len++] = '-';
+	else if (p->f & PLUS)
+		buf[len++] = '+';
+	else if (p->f & SPACE)
+		buf[len++] = ' ';
 
 	//BASIC WIDTH
 	i = len;
@@ -71,6 +77,9 @@ int			handle_int(t_parser *p, va_list args)
 			}
 	}
 
+	//TO UPPER FOR X
+	if (p->f & CAPSBASE)
+		toUpper(buf);
 	//PRINT BUF
   	i = 0;
   	while (i < len)
