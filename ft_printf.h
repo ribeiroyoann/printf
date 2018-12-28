@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 15:57:50 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/24 14:03:53 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/28 17:16:40 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@
 #define H		(1 << 7)
 #define L		(1 << 8)
 #define LL		(1 << 9)
+#define	FLAGS_J		(1 << 10)
 
 #define NEG		(1 << 11)
 #define CAPSBASE		(1 << 12)
@@ -68,6 +69,8 @@ int		parse_flags(t_parser *p, char **format);
 int		parse_width(t_parser *p, char **format);
 int		parse_precision(t_parser *p, char **format);
 int		parse_length(t_parser *p, char **format);
+
+void	parse_length2(t_parser *p, char **format);
 
 /*
 ** -------- HANDLERS --------

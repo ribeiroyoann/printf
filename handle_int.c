@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 19:36:58 by yoann             #+#    #+#             */
-/*   Updated: 2018/12/24 14:26:27 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/28 17:03:09 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ intmax_t	get_int_length(t_parser *p, va_list args)
 		return ((long)nbr);
 	else if (p->f & LL)
 		return ((long long)nbr);
+	else if (p->f & FLAGS_J)
+		return (nbr);
 	return (0);
 }
 

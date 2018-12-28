@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsers.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 13:53:03 by yoann             #+#    #+#             */
-/*   Updated: 2018/12/21 19:21:41 by yoribeir         ###   ########.fr       */
+/*   Updated: 2018/12/28 17:20:06 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,40 +70,29 @@ int		parse_precision(t_parser *p, char **format)
 	return (1);
 }
 
-int		parse_length(t_parser *p, char **format)
+void	parse_length2(t_parser *p, char **format)
 {
-	if (ft_strpbrk(*format, "hl"))
+	// if (ft_strpbrk(*format, "hl"))
+	if (**format == 'l')
 	{
-		if (**format == 'h')
-		{
-			if (*(*format + 1) == 'h')
-			{
-				*format += 2;
-				p->f |= HH;
-			}
-			else
-			{
-				*format += 1;
-				p->f |= H;
-			}
-		}
+		(*format)++;
+		p->f |= L;
 		if (**format == 'l')
 		{
-			if (*(*format + 1) == 'l')
-			{
-				*format += 2;
-				p->f |= LL;
-			}
-			else
-			{
-				*format += 1;
-				p->f |= L;
-			}
+			p->f |= LL;
+			(*format)++;
+		}
+	}
+	if (**format == 'h')
+	{
+		(*format)++;
+		p->f |= H;
+		if (**format == 'h')
+		{
+			p->f |= HH;
+			(*format)++;
 		}
 	}
 	else
-	{
 		p->f |= NONE;
-	}
-	return (1);
 }
