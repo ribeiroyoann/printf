@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 19:36:58 by yoann             #+#    #+#             */
-/*   Updated: 2018/12/28 17:03:09 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/28 17:28:40 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ intmax_t	get_int_length(t_parser *p, va_list args)
 	nbr = va_arg(args, intmax_t);
 	if (p->f & NONE)
 		return ((int)nbr);
-	else if (p->f & HH)
+	else if (p->f & FLAGS_HH)
 		return ((char)nbr);
-	else if (p->f & H)
-		return((short)nbr);
-	else if (p->f & L)
-		return ((long)nbr);
-	else if (p->f & LL)
+	else if (p->f & FLAGS_LL)
 		return ((long long)nbr);
+	else if (p->f & FLAGS_H)
+		return((short)nbr);
+	else if (p->f & FLAGS_L)
+		return ((long)nbr);
 	else if (p->f & FLAGS_J)
 		return (nbr);
 	return (0);

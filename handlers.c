@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 17:34:00 by yoann             #+#    #+#             */
-/*   Updated: 2018/12/24 13:51:10 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/28 17:28:59 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void		set_jumptable(t_jumptable handlers[128])
 	handlers['d'] = &handle_int;
 	handlers['i'] = &handle_int;
 	handlers['o'] = &handle_int;
+	handlers['u'] = &handle_int;
 	handlers['x'] = &handle_int;
 	handlers['X'] = &handle_int;
 	handlers['c'] = &handle_char;

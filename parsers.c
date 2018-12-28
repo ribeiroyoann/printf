@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 13:53:03 by yoann             #+#    #+#             */
-/*   Updated: 2018/12/28 17:20:06 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/28 17:25:54 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,28 +70,32 @@ int		parse_precision(t_parser *p, char **format)
 	return (1);
 }
 
-void	parse_length2(t_parser *p, char **format)
+void	parse_length(t_parser *p, char **format)
 {
-	// if (ft_strpbrk(*format, "hl"))
 	if (**format == 'l')
 	{
 		(*format)++;
-		p->f |= L;
+		p->f |= FLAGS_L;
 		if (**format == 'l')
 		{
-			p->f |= LL;
+			p->f |= FLAGS_LL;
 			(*format)++;
 		}
 	}
 	if (**format == 'h')
 	{
 		(*format)++;
-		p->f |= H;
+		p->f |= FLAGS_H;
 		if (**format == 'h')
 		{
-			p->f |= HH;
+			p->f |= FLAGS_HH;
 			(*format)++;
 		}
+	}
+	if (**format == 'j')
+	{
+		(*format)++;
+		p->f |= FLAGS_J;
 	}
 	else
 		p->f |= NONE;

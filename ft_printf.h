@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 15:57:50 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/28 17:16:40 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/28 17:24:07 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@
 #define	ZERO_FILL	(1 << 3)
 #define	PREFIX		(1 << 4)
 
-#define NONE	(1 << 5)
-#define HH		(1 << 6)
-#define H		(1 << 7)
-#define L		(1 << 8)
-#define LL		(1 << 9)
+#define NONE		(1 << 5)
+#define FLAGS_HH	(1 << 6)
+#define FLAGS_H		(1 << 7)
+#define FLAGS_L		(1 << 8)
+#define FLAGS_LL	(1 << 9)
 #define	FLAGS_J		(1 << 10)
 
 #define NEG		(1 << 11)
@@ -68,9 +68,8 @@ int			ft_printf(const char *format, ...);
 int		parse_flags(t_parser *p, char **format);
 int		parse_width(t_parser *p, char **format);
 int		parse_precision(t_parser *p, char **format);
-int		parse_length(t_parser *p, char **format);
 
-void	parse_length2(t_parser *p, char **format);
+void	parse_length(t_parser *p, char **format);
 
 /*
 ** -------- HANDLERS --------

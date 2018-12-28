@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 16:10:34 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/28 17:18:51 by yoann            ###   ########.fr       */
+/*   Updated: 2018/12/28 17:37:42 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		parser(t_parser *p, char **format)
 	parse_flags(p, format);
 	parse_width(p, format);
 	parse_precision(p, format);
-	parse_length2(p, format);
+	parse_length(p, format);
 	p->base = get_base(p, **format);
 	return (0);
 }
@@ -72,9 +72,9 @@ int		ft_printf(const char *format, ...)
 
 int		main(int argc, char **argv)
 {
-	printf(" %d\n", printf("[%d]", 17));
+	printf(" %d\n", printf("[%u]", 100));
 	printf("\n--------\n");
-	ft_printf("[%d]", 17);
+	ft_printf("[%u]", 100);
 
 	return (0);
 }
