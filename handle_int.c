@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_int.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 19:36:58 by yoann             #+#    #+#             */
-/*   Updated: 2018/12/28 17:28:40 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/10 16:05:39 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,11 @@ intmax_t	get_int_length(t_parser *p, va_list args)
 
 	nbr = va_arg(args, intmax_t);
 	if (p->f & NONE)
+	{
+		if (p->f & UNSIGNED)
+			return ((unsigned int)nbr);
 		return ((int)nbr);
+	}
 	else if (p->f & FLAGS_HH)
 		return ((char)nbr);
 	else if (p->f & FLAGS_LL)

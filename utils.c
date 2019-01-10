@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 12:47:12 by yoann             #+#    #+#             */
-/*   Updated: 2018/12/24 14:05:44 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/10 15:56:53 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ char                *itoa_base_long(t_parser *p, long long int n, int base, char
 
 int     get_base(t_parser *p, char c)
 {
-    if (c == 'd' || c == 'i')
+    if (c == 'd' || c == 'i' || c == 'u')
         return (10);
     else if (c == 'o')
         return (8);

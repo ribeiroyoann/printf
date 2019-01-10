@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 16:10:34 by yoribeir          #+#    #+#             */
-/*   Updated: 2018/12/28 17:37:42 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/10 16:07:06 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int		process(va_list args, const char *format)
 		if (*format == '%')
 		{
 			parser(p, (char **)&format);
+			if (*format == 'u')								// TO CLEAN
+				p->f |= UNSIGNED;							// FLAG FOR UNSIGNED NBR
 			jt = init_table(*format);
 			if (jt)
 				ret += jt(p, args);
@@ -55,7 +57,7 @@ int		process(va_list args, const char *format)
 		}
 		format++;
 	}
-	printf(" %d\n", ret);
+	// printf(" %d\n", ret);
 	return (ret);
 }
 
@@ -70,11 +72,11 @@ int		ft_printf(const char *format, ...)
 	return (ret);
 }
 
-int		main(int argc, char **argv)
-{
-	printf(" %d\n", printf("[%u]", 100));
-	printf("\n--------\n");
-	ft_printf("[%u]", 100);
+// int		main(int argc, char **argv)
+// {
+// 	printf(" %d\n", printf("[%u]", 4294967295));
+// 	printf("\n--------\n");
+// 	ft_printf("[%u]", 4294967295);
 
-	return (0);
-}
+// 	return (0);
+// }

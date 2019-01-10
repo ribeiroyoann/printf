@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handlers.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 17:34:00 by yoann             #+#    #+#             */
-/*   Updated: 2018/12/28 17:28:59 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/10 14:30:10 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,7 @@ t_jumptable	init_table(char c)
 	if (!handlers['d'])
 		set_jumptable(handlers);
 	if (ft_isascii(c))
-	{
 		return (handlers[(int)c]);
-	}
 	else
 		return (NULL);
 }
