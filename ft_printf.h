@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 15:57:50 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/01/11 15:13:25 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/11 15:31:47 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@
 #define FLAGS_LL	(1 << 9)
 #define	FLAGS_J		(1 << 10)
 
-#define NEG		(1 << 11)
-#define CAPSBASE		(1 << 12)
-#define UNSIGNED (1 << 13)
-#define PRECISION (1 << 14)
+#define NEG			(1 << 11)
+#define CAPSBASE	(1 << 12)
+#define UNSIGNED	(1 << 13)
+#define PRECISION	(1 << 14)
 
 #define BUF_SIZE 21
 

@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 14:29:36 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/11 15:21:16 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/11 15:31:35 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int			handle_string(t_parser *p, va_list args)
 	len = ft_strlen(str);
 	if (p->f & PRECISION)
 		len = (len < p->precision ? len : p->precision);
-	// printf("LEN %d WIDTH %d PREC %d\n", len, p->width, p->precision);
 	if (!(p->f & LEFT_ALIGN))
 	{
 		while (len < p->width)
