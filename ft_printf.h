@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 15:57:50 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/01/10 16:03:41 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/01/11 15:13:25 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@
 #define NEG		(1 << 11)
 #define CAPSBASE		(1 << 12)
 #define UNSIGNED (1 << 13)
+#define PRECISION (1 << 14)
 
 #define BUF_SIZE 21
 
@@ -83,6 +84,7 @@ int			handle_octal(t_parser *p, va_list args);
 int			handle_char(t_parser *p, va_list args);
 int			handle_pointer(t_parser *p, va_list args);
 int			handle_escape(t_parser *p, va_list args);
+int			handle_string(t_parser *p, va_list args);
 
 /*
 ** UTILS
@@ -98,5 +100,5 @@ char                *itoa_base_long(t_parser *p, long long n, int base, char *s_
 int    			 	get_base(t_parser *p, char c);
 
 char *toUpper(char *str);
-
+char    *ft_strrev(char *str);
 #endif

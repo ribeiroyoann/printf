@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 12:47:12 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/10 15:56:53 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/01/11 14:50:33 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,11 @@ char                *itoa_base_long(t_parser *p, long long int n, int base, char
 int     get_base(t_parser *p, char c)
 {
     if (c == 'd' || c == 'i' || c == 'u')
+    {
+        if (c == 'u')
+            p->f |= UNSIGNED;
         return (10);
+    }
     else if (c == 'o')
         return (8);
     else if (c == 'x' || c == 'X')
@@ -126,7 +130,7 @@ int     get_base(t_parser *p, char c)
     else return (-1);
 }
 
-char *toUpper(char *str) {
+char    *toUpper(char *str) {
   size_t len = ft_strlen(str);
   size_t i;
 
@@ -136,4 +140,23 @@ char *toUpper(char *str) {
     }
   }
   return str;
+}
+
+char    *ft_strrev(char *str)
+{
+    int     i;
+    int     length;
+    char    buff;
+
+    i = 0;
+    length = ft_strlen(str);
+    while (length - 1 > i)
+    {
+        buff = str[i];
+        str[i] = str[length - 1];
+        str[length - 1] = buff;
+        length--;
+        i++;
+    }
+    return (str);
 }

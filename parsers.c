@@ -6,7 +6,7 @@
 /*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 13:53:03 by yoann             #+#    #+#             */
-/*   Updated: 2018/12/28 17:25:54 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/11 15:13:54 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int		parse_precision(t_parser *p, char **format)
 	ret = 0;
 	if (**format == '.')
 	{
+		p->f |= PRECISION;
 		(*format)++;
 		while (ft_isdigit(**format))
 		{

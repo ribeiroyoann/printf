@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handlers.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 17:34:00 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/10 14:30:10 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/01/11 14:31:38 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void		set_jumptable(t_jumptable handlers[128])
 	handlers['u'] = &handle_int;
 	handlers['x'] = &handle_int;
 	handlers['X'] = &handle_int;
+	handlers['s'] = &handle_string;
 	handlers['c'] = &handle_char;
 	handlers['p'] = &handle_pointer;
 	handlers['%'] = &handle_escape;
