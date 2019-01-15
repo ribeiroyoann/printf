@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 12:47:12 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/11 14:50:33 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/15 15:48:44 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 char	*ft_strpbrk(const char *s1, const char *s2)
 {
+    printf("%s\n", s1);
     while (*s1)
         if (ft_strchr(s2, *s1++))
             return (char*)--s1;

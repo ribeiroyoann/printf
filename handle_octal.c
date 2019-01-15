@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 16:44:15 by yoann             #+#    #+#             */
-/*   Updated: 2018/12/21 19:22:10 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/01/15 17:22:30 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,15 @@ int			handle_octal(t_parser *p, va_list args)
 	nb_str = itoa_base(p, nbr, 8);
 	while (nb_str[++len])
 		buf[len] = nb_str[len];
-
 	// ZERO FILL && !LEFT_ALIGN
 	if (!(p->f & LEFT_ALIGN))
 	{
 		while ((p->f & ZERO_FILL) && (len < p->width) && (len < BUFF_SIZE))
 			buf[len++] = '0';
+	}
+	if (p->f & PREFIX)
+	{
+		buf[len++] = '0';
 	}
 	// SIGN
 	if (len && len == p->width && p->f & NEG)

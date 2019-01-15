@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 13:53:03 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/15 15:50:54 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/01/15 17:26:07 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		parse_flags(t_parser *p, char **format)
 {
 	(*format)++;
-	if (**format == '-' || **format == '+' || **format == ' ' || **format == '0'
+	while (**format == '-' || **format == '+' || **format == ' ' || **format == '0'
 		|| **format == '#')
 	{
 		if (**format == '-')
@@ -82,7 +82,7 @@ void	parse_length(t_parser *p, char **format)
 			(*format)++;
 		}
 	}
-	if (**format == 'h')
+	else if (**format == 'h')
 	{
 		(*format)++;
 		p->f |= FLAGS_H;
@@ -92,11 +92,23 @@ void	parse_length(t_parser *p, char **format)
 			(*format)++;
 		}
 	}
-	if (**format == 'j')
+	else if (**format == 'j')
 	{
 		(*format)++;
 		p->f |= FLAGS_J;
 	}
 	else
 		p->f |= NONE;
+}
+
+char	*get_prefix(t_parser *p, char c)
+{
+	if (c == 'o')
+		return ("0");
+	else if (c == 'x')
+		return ("x0");
+	else if (c == 'X')
+		return ("X0");
+	else
+		return ("");
 }

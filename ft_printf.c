@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 16:10:34 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/01/11 15:18:56 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/15 17:59:06 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ int		parser(t_parser *p, char **format)
 	parse_precision(p, format);
 	parse_length(p, format);
 	p->base = get_base(p, **format);
+	p->prefix = get_prefix(p, **format);
+	if (**format == 'u')
+		p->f &= ~(PLUS | SPACE);
+	if (p->precision > 0)
+		p->f &= ~ZERO_FILL;
 	return (0);
 }
 
@@ -47,6 +52,7 @@ int		process(va_list args, const char *format)
 			jt = init_table(*format);
 			if (jt)
 				ret += jt(p, args);
+			init_parser(p);
 		}
 		else
 		{
@@ -72,9 +78,9 @@ int		ft_printf(const char *format, ...)
 
 int		main(int argc, char **argv)
 {
-	printf(" %d\n", printf("[%10s]", "salut"));
+	printf(" %d\n", printf("%03.2d", 3));
 	printf("\n--------\n");
-	ft_printf("[%10s]", "salut");
+	ft_printf("%03.2d", 3);
 
 	return (0);
 }

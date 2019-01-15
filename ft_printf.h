@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 15:57:50 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/01/11 15:31:47 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/15 17:11:58 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef	struct	s_parser
 	int			len;
 	int			base;
 	short		f;
+	char		*prefix;
 }				t_parser;
 
 typedef		int (*t_jumptable)(t_parser *p, va_list args);
@@ -72,6 +73,7 @@ int		parse_width(t_parser *p, char **format);
 int		parse_precision(t_parser *p, char **format);
 
 void	parse_length(t_parser *p, char **format);
+char	*get_prefix(t_parser *p, char c);
 
 /*
 ** -------- HANDLERS --------

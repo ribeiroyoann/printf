@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 19:36:58 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/10 16:05:39 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/01/15 17:53:28 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,29 @@ int			handle_int(t_parser *p, va_list args)
 
 	ret = 0;
 	len = -1;
+	i = 0;
 	nbr = get_int_length(p, args);
 	nb_str = itoa_base_long(p, nbr, p->base, "0123456789abcdef");
 	while (nb_str[++len])
 		buf[len] = nb_str[len];
 
-	// ZERO FILL && !LEFT_ALIGN
+	while (len < p->precision && len < BUFF_SIZE)
+			buf[len++] = '0';
 	if (!(p->f & LEFT_ALIGN))
 	{
-		while (len < p->precision && len < BUFF_SIZE)
-			buf[len++] = '0';
+		// while (len < p->precision && len < BUFF_SIZE)
+		// 	buf[len++] = '0';
 		while ((p->f & ZERO_FILL) && (len < p->width) && (len < BUFF_SIZE))
 			buf[len++] = '0';
+	}
+	if (p->f & PREFIX)
+	{
+		while (p->prefix[i])
+		{
+			buf[len] = p->prefix[i];
+			len++;
+			i++;
+		}
 	}
 	// SIGN
 	if (len && len == p->width && ((p->f & NEG) || (p->f & PLUS) || (p->f & SPACE)))
@@ -74,7 +85,6 @@ int			handle_int(t_parser *p, va_list args)
 	i = len;
 	if (!(p->f & LEFT_ALIGN) && !(p->f & ZERO_FILL))
 	{
-
 			while (i < p->width)
 			{
 				ft_putchar(' ');
@@ -82,7 +92,6 @@ int			handle_int(t_parser *p, va_list args)
 				ret++;
 			}
 	}
-
 	//TO UPPER FOR X
 	if (p->f & CAPSBASE)
 		toUpper(buf);
@@ -94,7 +103,6 @@ int			handle_int(t_parser *p, va_list args)
   		i++;
   		ret++;
   	}
-
   	//LEFT JUSTIFY
   	if (p->f & LEFT_ALIGN)
   	{
@@ -105,7 +113,6 @@ int			handle_int(t_parser *p, va_list args)
   			i++;
   		}
   	}
-
 	return (ret);
 }
 
