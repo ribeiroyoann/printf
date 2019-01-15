@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 16:10:34 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/01/15 17:59:06 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/01/15 18:32:27 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ int		ft_printf(const char *format, ...)
 
 int		main(int argc, char **argv)
 {
-	printf(" %d\n", printf("%03.2d", 3));
+	printf(" %d\n", printf("%x", -42));
 	printf("\n--------\n");
-	ft_printf("%03.2d", 3);
+	ft_printf("%x", -42);
 
 	return (0);
 }

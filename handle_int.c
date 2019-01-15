@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 19:36:58 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/15 17:53:28 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/01/15 18:13:04 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,10 @@ int			handle_int(t_parser *p, va_list args)
 	{
 		// while (len < p->precision && len < BUFF_SIZE)
 		// 	buf[len++] = '0';
-		while ((p->f & ZERO_FILL) && (len < p->width) && (len < BUFF_SIZE))
+		while ((p->f & ZERO_FILL) && (len + ft_strlen(p->prefix) < p->width) && (len < BUFF_SIZE))
 			buf[len++] = '0';
 	}
-	if (p->f & PREFIX)
+	if (p->f & PREFIX && nbr)
 	{
 		while (p->prefix[i])
 		{
