@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_string.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/11 14:29:36 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/11 15:31:35 by yoann            ###   ########.fr       */
+/*   Updated: 2019/01/15 15:58:32 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ int			handle_string(t_parser *p, va_list args)
 
 	i = 0;
 	str = va_arg(args, char *);
+	if (!str)
+		str = "(null)";
 	len = ft_strlen(str);
 	if (p->f & PRECISION)
 		len = (len < p->precision ? len : p->precision);
