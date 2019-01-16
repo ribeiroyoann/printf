@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 12:47:12 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/15 15:48:44 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/01/16 14:53:19 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,9 @@ char                *itoa_base(t_parser *p, int n, int base)
     return (str);
 }
 
-//buf[len++] = digit < 10 ? '0' + digit : (flags & FLAGS_UPPERCASE ? 'A' : 'a') + digit - 10;
-
 char                *itoa_base_long(t_parser *p, long long int n, int base, char *s_base)
 {
-    long long int       nb;
+    uintmax_t       nb;
     unsigned int    i;
     char            *str;
 

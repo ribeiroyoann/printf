@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 15:57:50 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/01/15 17:11:58 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/01/16 15:28:47 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@
 #define CAPSBASE	(1 << 12)
 #define UNSIGNED	(1 << 13)
 #define PRECISION	(1 << 14)
+#define ZERO		(1 << 15)
 
 #define BUF_SIZE 21
 

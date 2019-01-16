@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 16:10:34 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/01/15 18:32:27 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/01/16 15:43:51 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int		process(va_list args, const char *format)
 		}
 		format++;
 	}
-	printf(" %d\n", ret);
+	// printf(" %d\n", ret);
 	return (ret);
 }
 
@@ -76,11 +76,11 @@ int		ft_printf(const char *format, ...)
 	return (ret);
 }
 
-int		main(int argc, char **argv)
-{
-	printf(" %d\n", printf("%x", -42));
-	printf("\n--------\n");
-	ft_printf("%x", -42);
+// int		main(int argc, char **argv)
+// {
+// 	printf(" %d\n", printf("%#.x %#.0x", 0, 0));
+// 	printf("\n--------\n");
+// 	ft_printf("%#.x %#.0x", 0, 0);
 
-	return (0);
-}
+// 	return (0);
+// }

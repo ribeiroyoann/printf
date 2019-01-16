@@ -46,11 +46,6 @@ FAILED TESTS:
   1. (   10) -->-100000001<--
   2. (   16) -->fffffffeffffffff<--
 
-# 0044 (int)
-  ft_printf("%#08x", 42);
-  1. (    8) -->00000x2a<--
-  2. (    8) -->0x00002a<--
-
 # 0046 (int)
   ft_printf("@moulitest: %#.x %#.0x", 0, 0);
   1. (   15) -->@moulitest: 0 0<--
@@ -75,16 +70,6 @@ FAILED TESTS:
   ft_printf("@moulitest: %5.o %5.0o", 0, 0);
   1. (   23) -->@moulitest:     0     0<--
   2. (   23) -->@moulitest:            <--
-
-# 0150 (long long)
-  ft_printf("%lld", -9223372036854775808);
-  1. (   20) -->-8FFEEAF0EB9CDAAC909<--
-  2. (   20) -->-9223372036854775808<--
-
-# 0152 (intmax_t)
-  ft_printf("%jd", -9223372036854775808);
-  1. (   20) -->-8FFEEAF0EB9CDAAC909<--
-  2. (   20) -->-9223372036854775808<--
 
 # 0153 (ssize_t)
   ft_printf("%zd", 4294967295);
@@ -140,15 +125,15 @@ FAILED TESTS:
 */
 SUCCESS TESTS:
 
+
   16. FAIL ft_printf("%x", -42);                         -> "ffffffd6"
   17. FAIL ft_printf("%X", -42);                         -> "FFFFFFD6"
-  44. FAIL ft_printf("%#08x", 42);                       -> "0x00002a"
   46. FAIL ft_printf("@moulitest: %#.x %#.0x", 0, 0);    -> "@moulitest:  "
   47. FAIL ft_printf("@moulitest: %.x %.0x", 0, 0);      -> "@moulitest:  "
   48. FAIL ft_printf("@moulitest: %5.x %5.0x", 0, 0);    -> "@moulitest:            "
   93. FAIL ft_printf("@moulitest: %.o %.0o", 0, 0);      -> "@moulitest:  "
   94. FAIL ft_printf("@moulitest: %5.o %5.0o", 0, 0);    -> "@moulitest:            "
- 150. FAIL ft_printf("%lld", -9223372036854775808);      -> "-9223372036854775808"
  175. FAIL ft_printf("@moulitest: %.d %.0d", 0, 0);      -> "@moulitest:  "
  176. FAIL ft_printf("@moulitest: %5.d %5.0d", 0, 0);    -> "@moulitest:            "
  190. FAIL ft_printf("%lu", -42);                        -> "18446744073709551574"
+ 197.      ft_printf("@moulitest: %.5u", 42);            -> "@moulitest: 00042"

@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 13:53:03 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/15 17:26:07 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/01/16 14:59:37 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,8 @@ void	parse_length(t_parser *p, char **format)
 
 char	*get_prefix(t_parser *p, char c)
 {
+	if (!(p->f & PREFIX))
+		return ("");
 	if (c == 'o')
 		return ("0");
 	else if (c == 'x')
