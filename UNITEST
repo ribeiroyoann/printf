@@ -10,10 +10,6 @@ gcc  -Ilibft/ -c handlers.c
 gcc  -Ilibft/ -c parsers.c
 gcc  -Ilibft/ -c utils.c
 gcc  -Ilibft/ -c handle_int.c
-handle_int.c:58:13: warning: incompatible pointer to integer conversion assigning to 'char' from 'char [1]' [-Wint-conversion]
-                        buf[len] = "";
-                                 ^ ~~
-1 warning generated.
 gcc  -Ilibft/ -c handle_octal.c
 gcc  -Ilibft/ -c handle_char.c
 gcc  -Ilibft/ -c handle_pointer.c
@@ -50,10 +46,10 @@ FAILED TESTS:
   1. (   10) -->-100000001<--
   2. (   16) -->fffffffeffffffff<--
 
-# 0095 (int)
-  ft_printf("@moulitest: %#.o %#.0o", 0, 0);
-  1. (   13) -->@moulitest:  <--
-  2. (   15) -->@moulitest: 0 0<--
+# 0046 (int)
+  ft_printf("@moulitest: %#.x %#.0x", 0, 0);
+  1. (   15) -->@moulitest: 0 0<--
+  2. (   13) -->@moulitest:  <--
 
 # 0153 (ssize_t)
   ft_printf("%zd", 4294967295);
@@ -144,7 +140,7 @@ SUCCESS TESTS:
   43.      ft_printf("%#8x", 42);                        -> "    0x2a"
   44.      ft_printf("%#08x", 42);                       -> "0x00002a"
   45.      ft_printf("%#-08x", 42);                      -> "0x2a    "
-  46.      ft_printf("@moulitest: %#.x %#.0x", 0, 0);    -> "@moulitest:  "
+  46. FAIL ft_printf("@moulitest: %#.x %#.0x", 0, 0);    -> "@moulitest:  "
   47.      ft_printf("@moulitest: %.x %.0x", 0, 0);      -> "@moulitest:  "
   48.      ft_printf("@moulitest: %5.x %5.0x", 0, 0);    -> "@moulitest:            "
   49.      ft_printf("%s", "abc");                       -> "abc"
@@ -193,7 +189,7 @@ SUCCESS TESTS:
   92.      ft_printf("@moulitest: %o", 0);               -> "@moulitest: 0"
   93.      ft_printf("@moulitest: %.o %.0o", 0, 0);      -> "@moulitest:  "
   94.      ft_printf("@moulitest: %5.o %5.0o", 0, 0);    -> "@moulitest:            "
-  95. FAIL ft_printf("@moulitest: %#.o %#.0o", 0, 0);    -> "@moulitest: 0 0"
+  95.      ft_printf("@moulitest: %#.o %#.0o", 0, 0);    -> "@moulitest: 0 0"
   96.      ft_printf("@moulitest: %.10o", 42);           -> "@moulitest: 0000000052"
   97.      ft_printf("%d", 1);                           -> "1"
   98.      ft_printf("the %d", 1);                       -> "the 1"

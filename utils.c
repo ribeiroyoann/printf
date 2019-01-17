@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 12:47:12 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/17 13:44:25 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/01/17 15:19:30 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ char                *itoa_base_long(t_parser *p, long long int n, int base, char
 	}
 	str[nb_len1(n)] = '\0';
 	i = 0;
-	if (p->f & ZEROVALUE && ((p->f & PRECISION) && !p->precision) && (!(p->f & PREFIX)))
+	if (p->f & ZEROVALUE && ((p->f & PRECISION) && !p->precision) && !(p->f & PREFIX))
 		return ("");
 	while (nb)
 	{
