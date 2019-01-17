@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 16:10:34 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/01/16 15:43:51 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/01/17 13:33:09 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,18 @@ void	init_parser(t_parser *p)
 	p->base = 0;
 }
 
+void	apply_spec_flags(t_parser *p, char c)
+{
+	if (c != 'i' && c != 'd')
+		p->f &= ~(PLUS | SPACE);
+	if (p->precision > 0)
+		p->f &= ~ZERO_FILL;
+	if (p->base == 10)
+		p->f &= ~PREFIX;
+	if (p->f & ZEROVALUE)
+		p->f &= ~PREFIX;
+}
+
 int		parser(t_parser *p, char **format)
 {
 	parse_flags(p, format);
@@ -28,10 +40,7 @@ int		parser(t_parser *p, char **format)
 	parse_length(p, format);
 	p->base = get_base(p, **format);
 	p->prefix = get_prefix(p, **format);
-	if (**format == 'u')
-		p->f &= ~(PLUS | SPACE);
-	if (p->precision > 0)
-		p->f &= ~ZERO_FILL;
+	apply_spec_flags(p, **format);
 	return (0);
 }
 
@@ -61,7 +70,6 @@ int		process(va_list args, const char *format)
 		}
 		format++;
 	}
-	// printf(" %d\n", ret);
 	return (ret);
 }
 
@@ -75,12 +83,3 @@ int		ft_printf(const char *format, ...)
 	va_end(args);
 	return (ret);
 }
-
-// int		main(int argc, char **argv)
-// {
-// 	printf(" %d\n", printf("%#.x %#.0x", 0, 0));
-// 	printf("\n--------\n");
-// 	ft_printf("%#.x %#.0x", 0, 0);
-
-// 	return (0);
-// }
