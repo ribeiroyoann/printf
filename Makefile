@@ -6,14 +6,14 @@
 #    By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/11 16:06:44 by yoribeir          #+#    #+#              #
-#    Updated: 2019/01/17 13:24:35 by yoribeir         ###   ########.fr        #
+#    Updated: 2019/03/07 13:35:45 by yoribeir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
 # CFLAGS = -Wall -Wextra -Werror
-SRC = ft_printf.c handlers.c parsers.c utils.c handle_int.c handle_octal.c \
+SRC = ft_printf.c handlers.c parsers.c utils.c handle_int.c \
 handle_char.c handle_pointer.c handle_escape.c handle_string.c
 OBJ = $(SRC:.c=.o)
 LIBFT_H = -Ilibft/

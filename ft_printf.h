@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 15:57:50 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/01/17 13:32:38 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/07 13:43:26 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef	struct	s_parser
 	int			base;
 	short		f;
 	char		*prefix;
+	char		format;
 }				t_parser;
 
 typedef		int (*t_jumptable)(t_parser *p, va_list args);

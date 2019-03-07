@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 19:36:58 by yoann             #+#    #+#             */
-/*   Updated: 2019/01/17 15:33:54 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/07 14:31:00 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,11 @@ intmax_t	get_int_length(t_parser *p, va_list args)
 	else if (p->f & FLAGS_H)
 		return((short)nbr);
 	else if (p->f & FLAGS_L)
+	{
+		if (p->f & UNSIGNED)
+			return ((unsigned long)nbr);
 		return ((long)nbr);
+	}
 	else if (p->f & FLAGS_J)
 		return (nbr);
 	return (0);
@@ -50,6 +54,7 @@ int			handle_int(t_parser *p, va_list args)
 	i = 0;
 	nbr = get_int_length(p, args);
 	nb_str = itoa_base_long(p, nbr, p->base, "0123456789abcdef");
+	printf("itoa %s\n", nb_str);
 	while (nb_str[++len])
 		buf[len] = nb_str[len];
 	while (len < p->precision && len < BUFF_SIZE)

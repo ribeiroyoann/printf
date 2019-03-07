@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 16:10:34 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/01/17 15:34:23 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/07 14:15:44 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ void	apply_spec_flags(t_parser *p, char c)
 		p->f &= ~PREFIX;
 	if (p->f & ZEROVALUE)
 		p->f &= ~PREFIX;
+	if (c == 'x' || c == 'X' || c == 'u')
+		p->f |= UNSIGNED;
 }
 
 int		parser(t_parser *p, char **format)
@@ -40,6 +42,7 @@ int		parser(t_parser *p, char **format)
 	parse_length(p, format);
 	p->base = get_base(p, **format);
 	p->prefix = get_prefix(p, **format);
+	p->format = **format;
 	apply_spec_flags(p, **format);
 	return (0);
 }
