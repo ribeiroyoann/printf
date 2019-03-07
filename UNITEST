@@ -195,3 +195,56 @@
  195. FAIL ft_printf("%hU", 4294967296);                 -> "4294967296"
  196. FAIL ft_printf("%U", 4294967296);                  -> "4294967296"
  197.      ft_printf("@moulitest: %.5u", 42);            -> "@moulitest: 00042"
+
+[ -------STARTING ALL UNIT TESTS------- ]
+>>>> 00_no_conv.spec.c ----------- [Ok !] ....
+>>>> 01_conv_s_simple.spec.c ----- [Ok !] ......
+>>>> 02_conv_s_multiple.spec.c --- [Ok !] ...
+>>>> 03_conv_d.spec.c ------------ [Ok !] .......
+>>>> 04_conv_p.spec.c ------------ [Ok !] .....
+>>>> 05_percent_escape.spec.c ---- [FAIL] ....FFF. [FAIL] test_modulo_without_valid_specifier -> printf("%")
+>>>> 06_mix_sdp_percent.spec.c --- [Ok !] ..
+>>>> 07_conv_S.spec.c ------------ [FAIL] FFFFF [FAIL] test_simple -> printf("%S", L"Á±≥")
+>>>> 08_conv_D.spec.c ------------ [FAIL] FFFF [FAIL] test_simple -> printf("%D", 0L)
+>>>> 09_conv_i.spec.c ------------ [Ok !] .....
+>>>> 10_conv_o.spec.c ------------ [Ok !] ....
+>>>> 11_conv_O.spec.c ------------ [FAIL] FFFFF [FAIL] test_simple -> printf("%O", 42)
+>>>> 12_conv_u.spec.c ------------ [Ok !] .....
+>>>> 13_conv_U.spec.c ------------ [FAIL] FFF [FAIL] test_simple -> printf("%U", 42)
+>>>> 14_conv_x.spec.c ------------ [Ok !] .....
+>>>> 15_conv_X.spec.c ------------ [Ok !] .....
+>>>> 16_conv_c.spec.c ------------ [Ok !] ....
+>>>> 17_conv_C.spec.c ------------ [FAIL] FFFFFFFFF [FAIL] test_simple_char -> printf("%C", 'c')
+>>>> 18_mix_all_previous.spec.c -- [FAIL] FF [FAIL] test_simple -> printf("%s %C %d %p %x %% %S", "bonjour ", L'Ë©≤', 42, &free, 42, L"ŸM-^Dÿ≠ŸM-^E ÿÆŸM-^Fÿ...
+>>>> 40_length_modif_l.spec.c ---- [FAIL] ...F.....FFFFFFFFFF [FAIL] test_ld_long_max -> printf("%ld", LONG_MAX)
+>>>> 41_length_modif_ll.spec.c --- [FAIL] .F..T.FFFFFFF [FAIL] test_lld_llong_max -> printf("%lld", LLONG_MAX)
+>>>> 42_length_modif_h.spec.c ---- [FAIL] ......FFFFFFF [FAIL] test_hu_max -> printf("%hu, %hu", 0, USHRT_MAX)
+>>>> 43_length_modif_hh.spec.c --- [FAIL] ..........FFFF....FFFFF [FAIL] test_hhu_max -> printf("%hhu, %hhu", 0, UCHAR_MAX)
+>>>> 43_length_modif_j.spec.c ---- [FAIL] .F..T.FFFFFFF [FAIL] test_jd_llong_max -> printf("%jd", LLONG_MAX)
+>>>> 44_length_modif_z.spec.c ---- [FAIL] FFFFFFFFFFF [FAIL] test_zd_simple -> printf("%zd%zd", 0, 42)
+>>>> 45_length_modif_edge_cases.sp [Ok !] .
+>>>> 50_min_width.spec.c --------- [FAIL] .........FFF [FAIL] invalidConvSpec_withMinWith -> printf("{%10R}")
+>>>> 51_min_width_flag_minus.spec. [Ok !] ...
+>>>> 52_min_width_flag_zero.spec.c [FAIL] ......FFFF. [FAIL] char_posMinWidth_zeroFlag -> printf("{%03c}", 0)
+>>>> 53_min_width_non_valid_conv.s [FAIL] F [FAIL] nonValidConv_negativeMinWidth -> printf("{%-15Z}", 123)
+>>>> 60_flag_sharp.spec.c -------- [FAIL] ...F....... [FAIL] test_octalUppercase_max -> printf("%#O", 1)
+>>>> 61_flag_plus.spec.c --------- [FAIL] .....F..FF..F [FAIL] test_plus_c_up_zero -> printf("%+C", 0)
+>>>> 62_flag_space.spec.c -------- [FAIL] ..........FFFF. [FAIL] test_space_C_zero -> printf("{% C}", 0)
+>>>> 69_flag_mix.spec.c ---------- [FAIL] ........F [FAIL] octalUppercase_precision_sharpFlag_zeroValue -> printf("%#.O", 0)
+>>>> 70_precision_for_diu.spec.c - [Ok !] ..............................
+>>>> 71_precision_for_oOxX.spec.c  [FAIL] .F.F..F..FFF................... [FAIL] test_precision_o_len_higher_prec -> printf("%.4o", 424242)
+>>>> 72_precision_for_sS.spec.c -- [FAIL] .........FFFFF [FAIL] test_precision_S -> printf("%.4S", L"ÊM-M-^QÊM-^XØ‰∏M-ÂM-^O™ÁM-^L´„M-M-^B")
+>>>> 73_precision_for_cC.spec.c -- [FAIL] ...FFF [FAIL] cUpperNullChar -> printf("%.C", 0)
+>>>> 74_precision_for_p.spec.c --- [FAIL] .F..FF [FAIL] pNullPointer_3Precision -> printf("%.5p", 0)
+>>>> 75_precision_for_percent.spec [Ok !] .
+>>>> 79_precision_mixed_with_flags [FAIL] ...FF.F.FF [FAIL] char_precision_minwdith_and_flagZero -> printf("{%05.c}", 0)
+>>>> 90_incomptbl_values_sdpi.spec [FAIL] .FF. [FAIL] test_zi -> printf("%zi", LLONG_MIN)
+>>>> 91_incomptbl_values_uUSDcC.sp [FAIL] ..F..F [FAIL] test_unsigned_long_max_plus_one -> printf("%U", ULONG_MAX + 1)
+>>>> 92_incomptbl_values_oOxX.spec [FAIL] F.F.... [FAIL] test_octal_neg -> printf("%o, %ho, %hho", -42, -42, -42)
+>>>> bonus_01_wildcard.spec.c ---- [FAIL] FFFFFFFFFFFFF [FAIL] wildcard_for_min_width_positive -> printf("%*d", 5, 42)
+>>>> bonus_02_wildcard_multi.spec. [FAIL] F [FAIL] wildcard_for_min_width_positive -> printf("%*.*d", 0, 3, 0)
+>>>> bonus_03_wildcard_flag_mix.sp [FAIL] FFFF [FAIL] digit_wildcard_and_min_width_value1 -> printf("{%3*d}", 0, 0)
+>>>> bonus_10_conv_fF.spec.c ----- [FAIL] FFFF [FAIL] simple_small_nbr -> printf("{%f}{%F}", 1.42, 1.42)
+[ ----------END OF UNIT TESTS---------- ]
+
+>>>> Result: 16/48 test suites passed. 241/396 tests passed (dots).

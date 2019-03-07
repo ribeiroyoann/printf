@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 15:57:50 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/07 13:43:26 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/07 17:36:09 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@
 #define PRECISION	(1 << 14)
 #define ZEROVALUE	(1 << 15)
 
-#define BUF_SIZE 21
+#define BUF_SIZE 512
 
 typedef	struct	s_parser
 {

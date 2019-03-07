@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 19:36:58 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/07 14:37:58 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/07 18:43:14 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int			handle_int(t_parser *p, va_list args)
 		}
 	}
 	// SIGN
-	if (len && len == p->width && ((p->f & NEG) || (p->f & PLUS) || (p->f & SPACE)))
+	if (p->f & ZERO_FILL && len && len == p->width && ((p->f & NEG) || (p->f & PLUS) || (p->f & SPACE)))
 		len--;
 	if (p->f & NEG)
 		buf[len++] = '-';
@@ -81,7 +81,6 @@ int			handle_int(t_parser *p, va_list args)
 		buf[len++] = '+';
 	else if (p->f & SPACE)
 		buf[len++] = ' ';
-
 	//BASIC WIDTH
 	i = len;
 	if (!(p->f & LEFT_ALIGN) && !(p->f & ZERO_FILL))
