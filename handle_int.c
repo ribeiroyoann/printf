@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 19:36:58 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/07 14:31:00 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/07 14:37:58 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int			handle_int(t_parser *p, va_list args)
 	i = 0;
 	nbr = get_int_length(p, args);
 	nb_str = itoa_base_long(p, nbr, p->base, "0123456789abcdef");
-	printf("itoa %s\n", nb_str);
 	while (nb_str[++len])
 		buf[len] = nb_str[len];
 	while (len < p->precision && len < BUFF_SIZE)
