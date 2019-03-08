@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 13:27:01 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/07 19:32:09 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/08 19:28:19 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 
 int		main(int argc, char **argv)
 {
-	ft_printf("%lu", ULONG_MAX);
+	ft_printf("%hD", USHRT_MAX);
 	printf("\n");
-	printf("%lu", ULONG_MAX);
+	printf("%hD", USHRT_MAX);
 
 	return (0);
 }

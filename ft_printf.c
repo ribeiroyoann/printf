@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 16:10:34 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/07 16:51:05 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/08 19:28:58 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,12 @@ int		parser(t_parser *p, char **format)
 	parse_width(p, format);
 	parse_precision(p, format);
 	parse_length(p, format);
-	p->base = get_base(p, **format);
-	p->prefix = get_prefix(p, **format);
 	p->format = **format;
-	apply_spec_flags(p, **format);
+	if (p->format == 'O' || p->format == 'U' || p->format == 'D')
+		p->format += 32;
+	p->base = get_base(p, p->format);
+	p->prefix = get_prefix(p, p->format);
+	apply_spec_flags(p, p->format);
 	return (0);
 }
 

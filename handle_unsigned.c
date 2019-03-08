@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_int.c                                       :+:      :+:    :+:   */
+/*   handle_unsigned.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/12 19:36:58 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/08 19:29:42 by yoribeir         ###   ########.fr       */
+/*   Created: 2019/03/08 15:54:22 by yoribeir          #+#    #+#             */
+/*   Updated: 2019/03/08 18:42:37 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-intmax_t	get_int_length(t_parser *p, va_list args)
+uintmax_t	get_uint_length(t_parser *p, va_list args)
 {
-	intmax_t	nbr;
+	uintmax_t	nbr;
 
-	nbr = va_arg(args, intmax_t);
+	nbr = va_arg(args, uintmax_t);
 	if (p->f & NONE)
-		return ((int)nbr);
+		return ((unsigned int)nbr);
 	else if (p->f & FLAGS_HH)
-		return ((char)nbr);
+		return ((unsigned char)nbr);
 	else if (p->f & FLAGS_LL)
-		return ((long long)nbr);
+		return ((unsigned long long)nbr);
 	else if (p->f & FLAGS_H)
-		return((short)nbr);
+		return((unsigned int)nbr);
 	else if (p->f & FLAGS_L)
-			return ((long)nbr);
+		return ((unsigned long)nbr);
 	else if (p->f & FLAGS_J)
-		return (nbr);
+		return ((uintmax_t)nbr);
 	return (0);
 }
 
-int			handle_int(t_parser *p, va_list args)
+int			handle_unsigned(t_parser *p, va_list args)
 {
-	intmax_t	nbr;
+	uintmax_t	nbr;
 	char		*nb_str;
 	char		buf[BUF_SIZE];
 	int			len;
@@ -44,8 +44,8 @@ int			handle_int(t_parser *p, va_list args)
 	ret = 0;
 	len = -1;
 	i = 0;
-	nbr = get_int_length(p, args);
-	nb_str = itoa_base_long(p, nbr, p->base, "0123456789abcdef");
+	nbr = get_uint_length(p, args);
+	nb_str = itoa_base_ulong(p, nbr, p->base, "0123456789abcdef");
 	while (nb_str[++len])
 		buf[len] = nb_str[len];
 	while (len < p->precision && len < BUFF_SIZE)
@@ -109,5 +109,3 @@ int			handle_int(t_parser *p, va_list args)
   	}
 	return (ret);
 }
-
-

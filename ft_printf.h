@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 15:57:50 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/08 14:36:17 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/08 19:33:17 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ char	*get_prefix(t_parser *p, char c);
 t_jumptable	init_table(char c);
 intmax_t	get_int_length(t_parser *p, va_list args);
 int			handle_int(t_parser *p, va_list args);
+int			handle_unsigned(t_parser *p, va_list args);
 int			handle_octal(t_parser *p, va_list args);
 int			handle_char(t_parser *p, va_list args);
 int			handle_pointer(t_parser *p, va_list args);
@@ -101,6 +102,7 @@ void	printBits(size_t const size, void const * const ptr);
 char                *ft_itoa1(t_parser *p, int n);
 char                *itoa_base(t_parser *p, int n, int base);
 char                *itoa_base_long(t_parser *p, long long n, int base, char *s_base);
+char				*itoa_base_ulong(t_parser *p, unsigned long long n, int base, char *s_base);
 int    			 	get_base(t_parser *p, char c);
 
 char *toUpper(char *str);

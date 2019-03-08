@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/12 12:47:12 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/07 14:48:21 by yoribeir         ###   ########.fr       */
+/*   Created: 2019/03/08 18:08:25 by yoribeir          #+#    #+#             */
+/*   Updated: 2019/03/08 18:57:42 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void    printBits(size_t const size, void const * const ptr)
 	puts("");
 }
 
-unsigned int        nb_len1(int n)
+unsigned int        nb_len1(unsigned long long n)
 {
 	unsigned int    count;
 
@@ -55,27 +55,29 @@ unsigned int        nb_len1(int n)
 	return (count);
 }
 
-char                *itoa_base(t_parser *p, int n, int base)
+char				*itoa_base_long(t_parser *p, long long int n, int base, char *s_base)
 {
-	unsigned int    count;
-	unsigned int    nb;
+	intmax_t       nb;
 	unsigned int    i;
 	char            *str;
-	char            *s_base = "0123456789ABCDEF";
 
-	count = nb_len1(n);
 	nb = n;
 	if (n < 0)
 	{
 		p->f |= NEG;
 		nb = -n;
 	}
-	if (!(str = ft_strnew(count)))
+	if (!(str = ft_strnew(nb_len1(n))))
 		return (0);
 	if (!nb)
+	{
+		p->f |= ZEROVALUE;
 		str[0] = '0';
-	str[count] = '\0';
+	}
+	str[nb_len1(n)] = '\0';
 	i = 0;
+	if (p->f & ZEROVALUE && ((p->f & PRECISION) && !p->precision) && (!(p->f & PREFIX) || p->format == 'x'))
+		return ("");
 	while (nb)
 	{
 		str[i++] = s_base[nb % base];
@@ -84,18 +86,13 @@ char                *itoa_base(t_parser *p, int n, int base)
 	return (str);
 }
 
-char                *itoa_base_long(t_parser *p, long long int n, int base, char *s_base)
+char				*itoa_base_ulong(t_parser *p, unsigned long long n, int base, char *s_base)
 {
-	uintmax_t       nb;
+	unsigned long long       nb;
 	unsigned int    i;
 	char            *str;
 
 	nb = n;
-	if (n < 0)
-	{
-		p->f |= NEG;
-		nb = -n;
-	}
 	if (!(str = ft_strnew(nb_len1(n))))
 		return (0);
 	if (!nb)
