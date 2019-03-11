@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 15:54:22 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/08 18:42:37 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/11 13:53:58 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,13 @@ int			handle_unsigned(t_parser *p, va_list args)
 	nb_str = itoa_base_ulong(p, nbr, p->base, "0123456789abcdef");
 	while (nb_str[++len])
 		buf[len] = nb_str[len];
-	while (len < p->precision && len < BUFF_SIZE)
+	while (len + ft_strlen(p->prefix) < p->precision && len < BUFF_SIZE)
 			buf[len++] = '0';
+	// PANSEMENT
+	if (!p->precision && p->f & PRECISION)
+		p->f &= ~ZERO_FILL;
+	if (!nbr && p->format == 'o')
+		p->prefix = "";
 	if (!(p->f & LEFT_ALIGN))
 	{
 		if (p->width && (p->f & ZERO_FILL) && (p->f & NEG || (p->f & (PLUS | SPACE))))
@@ -75,6 +80,7 @@ int			handle_unsigned(t_parser *p, va_list args)
 		buf[len++] = '+';
 	else if (p->f & SPACE)
 		buf[len++] = ' ';
+
 	//BASIC WIDTH
 	i = len;
 	if (!(p->f & LEFT_ALIGN) && !(p->f & ZERO_FILL))

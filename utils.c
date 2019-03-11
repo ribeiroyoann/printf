@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 18:08:25 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/08 18:57:42 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/11 13:15:10 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ unsigned int        nb_len1(unsigned long long n)
 
 char				*itoa_base_long(t_parser *p, long long int n, int base, char *s_base)
 {
-	intmax_t       nb;
+	uintmax_t       nb;
 	unsigned int    i;
 	char            *str;
 
