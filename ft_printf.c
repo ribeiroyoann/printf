@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 16:10:34 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/11 15:52:16 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/11 16:22:04 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ int		process(va_list args, const char *format)
 			jt = init_table(*format);
 			if (jt)
 				ret += jt(p, args);
-			print_parser(p);
 			init_parser(p);
 		}
 		else
