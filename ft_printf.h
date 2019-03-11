@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 15:57:50 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/08 19:33:17 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/11 16:21:03 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,13 @@
 #define FLAGS_L		(1 << 8)
 #define FLAGS_LL	(1 << 9)
 #define	FLAGS_J		(1 << 10)
+#define FLAGS_Z		(1 << 11)
 
-#define NEG			(1 << 11)
-#define CAPSBASE	(1 << 12)
-#define UNSIGNED	(1 << 13)
-#define PRECISION	(1 << 14)
-#define ZEROVALUE	(1 << 15)
+#define NEG			(1 << 12)
+#define CAPSBASE	(1 << 13)
+#define UNSIGNED	(1 << 14)
+#define PRECISION	(1 << 15)
+#define ZEROVALUE	(1 << 16)
 
 #define BUF_SIZE 512
 

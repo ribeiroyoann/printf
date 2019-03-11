@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 19:36:58 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/11 12:46:28 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/11 15:44:09 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ intmax_t	get_int_length(t_parser *p, va_list args)
 			return ((long)nbr);
 	else if (p->f & FLAGS_J)
 		return (nbr);
+	else if (p->f & FLAGS_Z)
+		return ((size_t)nbr);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 13:53:03 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/07 14:08:11 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/11 15:43:27 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,11 @@ void	parse_length(t_parser *p, char **format)
 	{
 		(*format)++;
 		p->f |= FLAGS_J;
+	}
+	else if (**format == 'z')
+	{
+		(*format)++;
+		p->f |= FLAGS_Z;
 	}
 	else
 		p->f |= NONE;

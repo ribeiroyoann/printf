@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 13:27:01 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/11 13:47:59 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/11 15:46:09 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,25 @@
 
 int		main(int argc, char **argv)
 {
-	int		nb;
-	nb = 45;
-	ft_printf("size + hash + zero + prec:%#05.3o\n", nb);
-	ft_printf("size + hash + zero + prec:%0#5.3o\n", nb);
-	ft_printf("size + hash + minus + prec:%-#7.3o\n", nb);
+	int		nb = 12;
+	ft_printf("[%.d %.0d]", 42, 43);
 	printf("\n");
-	printf("-------------\n");
-	printf("size + hash + zero + prec:%#05.3o\n", nb);
+	printf("[%.d %.0d]", 42, 43);
+	printf("\n\n");
+	ft_printf("%#x", 0);
 	printf("\n");
-	printf("size + hash + zero + prec:%0#5.3o\n", nb);
+	printf("%#x", 0);
 	printf("\n");
-	printf("size + hash + minus + prec:%-#7.3o\n", nb);
+	ft_printf("size + hash + 0 + prec:%#05.3X", nb);
 	printf("\n");
-
+	ft_printf("size + hash + 0 + prec:%0#5.3X", nb);
+	printf("\n");
+	ft_printf("size + hash + minus + prec:%-#7.3X", nb);
+	printf("\n-----------------\n");
+	printf("size + hash + 0 + prec:%#05.3X", nb);
+	printf("\n");
+	printf("size + hash + 0 + prec:%0#5.3X", nb);
+	printf("\n");
+	printf("size + hash + minus + prec:%-#7.3X", nb);
 	return (0);
 }

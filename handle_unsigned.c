@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 15:54:22 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/11 13:53:58 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/11 15:40:54 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,34 +46,34 @@ int			handle_unsigned(t_parser *p, va_list args)
 	i = 0;
 	nbr = get_uint_length(p, args);
 	nb_str = itoa_base_ulong(p, nbr, p->base, "0123456789abcdef");
+	if (!nbr)
+		p->f &= ~PREFIX;
 	while (nb_str[++len])
 		buf[len] = nb_str[len];
-	while (len + ft_strlen(p->prefix) < p->precision && len < BUFF_SIZE)
-			buf[len++] = '0';
-	// PANSEMENT
-	if (!p->precision && p->f & PRECISION)
-		p->f &= ~ZERO_FILL;
-	if (!nbr && p->format == 'o')
-		p->prefix = "";
+	while ((len < p->precision) && (len < BUF_SIZE))
+		buf[len++] = '0';
 	if (!(p->f & LEFT_ALIGN))
 	{
-		if (p->width && (p->f & ZERO_FILL) && (p->f & NEG || (p->f & (PLUS | SPACE))))
+		if (p->width && (p->f & ZERO_FILL) && (p->f & NEG || p->f & (PLUS | SPACE)))
 			p->width--;
-		while ((p->f & ZERO_FILL) && (len + ft_strlen(p->prefix) < p->width) && (len < BUFF_SIZE))
+		while ((p->f & ZERO_FILL) && (len < p->width) && (len < BUF_SIZE))
 			buf[len++] = '0';
 	}
-	if (p->f & PREFIX && nbr)
+	if (p->f & PREFIX)
 	{
-		while (p->prefix[i])
+		if (!(p->f & PRECISION) && len && ((len == p->precision) || (len == p->width)))
 		{
-			buf[len] = p->prefix[i];
-			len++;
-			i++;
+			len--;
+			if (len && (p->base == 16))
+				len--;
 		}
+		if (p->base == 16)
+			buf[len++] = 'x';
+		else if (p->base == 2)
+			buf[len++] = 'b';
+		if (len < BUF_SIZE)
+			buf[len++] = '0';
 	}
-	// SIGN
-	// if (p->f & ZERO_FILL && len && len == p->width && ((p->f & NEG) || (p->f & PLUS) || (p->f & SPACE)))
-	// 	len--;
 	if (p->f & NEG)
 		buf[len++] = '-';
 	else if (p->f & PLUS)
