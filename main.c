@@ -3,20 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 13:27:01 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/12 14:47:49 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/12 18:41:11 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <limits.h>
 
+#include <locale.h>
+#include <wchar.h>
+
 int		main(int argc, char **argv)
 {
-	ft_printf("%hU", 4294967296);
-	printf("\n");
-	printf("%hU", 4294967296);
-	return (0);
+ 	double nbr = 42.7;
+
+ 	ft_printf("%f", nbr);
+ 	printf("\n");
+ 	printf("%f", nbr);
+ 	return (0);
 }

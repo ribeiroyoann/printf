@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 15:57:50 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/12 14:50:55 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/12 18:24:12 by yoann            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,9 @@ int			handle_char(t_parser *p, va_list args);
 int			handle_pointer(t_parser *p, va_list args);
 int			handle_escape(t_parser *p, va_list args);
 int			handle_string(t_parser *p, va_list args);
+int			handle_wchar(t_parser *p, va_list args);
+int			handle_wstring(t_parser *p, va_list args);
+int			handle_float(t_parser *p, va_list args);
 
 /*
 ** UTILS
