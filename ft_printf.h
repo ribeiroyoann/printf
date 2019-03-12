@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 15:57:50 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/11 16:21:03 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/12 14:50:55 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@
 #define UNSIGNED	(1 << 14)
 #define PRECISION	(1 << 15)
 #define ZEROVALUE	(1 << 16)
+#define UMAJ		(1 << 17)
 
 #define BUF_SIZE 512
 
@@ -59,7 +60,7 @@ typedef	struct	s_parser
 	int			precision;
 	int			len;
 	int			base;
-	short		f;
+	long		f;
 	char		*prefix;
 	char		format;
 }				t_parser;

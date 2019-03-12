@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 15:54:22 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/11 15:40:54 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/12 14:51:25 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ uintmax_t	get_uint_length(t_parser *p, va_list args)
 	uintmax_t	nbr;
 
 	nbr = va_arg(args, uintmax_t);
+	if (p->f & UMAJ)
+		return ((unsigned long)nbr);
 	if (p->f & NONE)
 		return ((unsigned int)nbr);
 	else if (p->f & FLAGS_HH)
