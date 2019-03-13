@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 13:27:01 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/12 18:41:11 by yoann            ###   ########.fr       */
+/*   Updated: 2019/03/13 18:51:37 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,13 @@
 
 int		main(int argc, char **argv)
 {
- 	double nbr = 42.7;
+	ft_printf("MY:%01.u", 0);
+	printf("\n");
+	printf("OG:%01.u", 0);
+	printf("\n----------\n");
+	ft_printf("MY:%010u", 0);
+	printf("\n");
+	printf("OG:%010u", 0);
 
- 	ft_printf("%f", nbr);
- 	printf("\n");
- 	printf("%f", nbr);
  	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 17:38:56 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/07 13:33:13 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/13 17:17:30 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,15 @@
 int			handle_char(t_parser *p, va_list args)
 {
 	char		chr;
-	char		buf[BUF_SIZE];
+	int			buf[BUF_SIZE];
 	int			len;
 	int			ret;
 	int			i;
 
 	ret = 0;
 	len = 1;
-	chr = (char)va_arg(args, int);
+	chr = va_arg(args, int);
 	buf[0] = chr;
-
 	i = len;
 	if (!(p->f & LEFT_ALIGN) && !(p->f & ZERO_FILL))
 	{
