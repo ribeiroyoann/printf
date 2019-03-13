@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 15:54:22 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/13 19:04:59 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/13 19:11:32 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ int			handle_unsigned(t_parser *p, va_list args)
 		p->f &= ~PREFIX;
 	while (nb_str[++len])
 		buf[len] = nb_str[len];
-	// if (p->f & ZEROVALUE) 						// 😭
-	// 	len = 1;
 	while ((len < p->precision) && (len < BUF_SIZE))
 		buf[len++] = '0';
 	if (!(p->f & LEFT_ALIGN))
@@ -63,9 +61,7 @@ int			handle_unsigned(t_parser *p, va_list args)
 		if (p->width && (p->f & ZERO_FILL) && (p->f & NEG || p->f & (PLUS | SPACE)))
 			p->width--;
 		while ((p->f & ZERO_FILL) && (len + ft_strlen(get_prefix(p, p->format)) < p->width) && (len < BUF_SIZE))
-		{
 			buf[len++] = '0';
-		}
 	}
 	// len > 1 || len for "%#1x, 1"
 	if (p->f & PREFIX)

@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 13:27:01 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/13 18:51:37 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/13 19:15:56 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,8 @@
 
 int		main(int argc, char **argv)
 {
-	ft_printf("MY:%01.u", 0);
+	ft_printf("%f\n", 42.63);
 	printf("\n");
-	printf("OG:%01.u", 0);
-	printf("\n----------\n");
-	ft_printf("MY:%010u", 0);
-	printf("\n");
-	printf("OG:%010u", 0);
-
+	printf("%f\n", 42.63);
  	return (0);
 }
