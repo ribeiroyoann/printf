@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 17:38:56 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/13 17:17:30 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/14 16:06:43 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,28 +26,25 @@ int			handle_char(t_parser *p, va_list args)
 	buf[0] = chr;
 	i = len;
 	if (!(p->f & LEFT_ALIGN) && !(p->f & ZERO_FILL))
+		while (i++ < p->width)
+		{
+			ft_putchar(' ');
+			ret++;
+		}
+	i = -1;
+	while (++i < len)
 	{
-			while (i++ < p->width)
-			{
-				ft_putchar(' ');
-				ret++;
-			}
+		ft_putchar(buf[len - i - 1]);
+		ret++;
 	}
-  	i = 0;
-  	while (i < len)
-  	{
-  		ft_putchar(buf[len - i - 1]);
-  		i++;
-  		ret++;
-  	}
-  	if (p->f & LEFT_ALIGN)
-  	{
-  		while (i < p->width)
-  		{
-  			ft_putchar(' ');
-  			ret++;
-  			i++;
-  		}
-  	}
+	if (p->f & LEFT_ALIGN)
+	{
+		while (i < p->width)
+		{
+			ft_putchar(' ');
+			ret++;
+			i++;
+		}
+	}
 	return (ret);
 }

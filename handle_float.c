@@ -6,43 +6,43 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:51:20 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/13 19:27:39 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/14 15:56:55 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <limits.h>
 
-long double		round_nbr(t_parser *p, long double nbr)
+long double		round_nbr(t_parser *p, long double nbr, int precision)
 {
-	long long	tmp;
-	long double	tmp2;
-	int			idx;
+	long long	integer;
+	long double	decimal;
+	int			i;
 	int			last;
 
-	if (p->precision == 0)
+	if (precision == 0)
 	{
-		tmp = nbr * 10;
-		return (nbr + (tmp % 10 >= 5));
+		integer = nbr * 10;
+		return (nbr + (integer % 10 >= 5));
 	}
-	tmp2 = (nbr - (long long)nbr) * 10;
-	idx = 0;
+	decimal = (nbr - (long long)nbr) * 10;
+	i = 0;
 	last = -1;
-	while (p->precision-- > 0 && ++idx)
+	while (precision-- > 0 && ++i)
 	{
-		if ((int)tmp2 == 9 || (int)tmp2 == -9)
-			last = idx;
-		tmp2 = tmp2 - (long long)tmp2;
-		tmp2 *= 10;
+		if ((int)decimal == 9 || (int)decimal == -9)
+			last = i;
+		decimal = decimal - (long long)decimal;
+		decimal *= 10;
 	}
-	tmp2 = last == -1 ? 0 : 0.1;
-	tmp2 = nbr <= -0.0 ? -tmp2 : tmp2;
+	decimal = last == -1 ? 0 : 0.1;
+	decimal = nbr <= -0.0 ? -decimal : decimal;
 	while (last-- > 0)
-		tmp2 /= 10;
-	return (nbr + tmp2);
+		decimal /= 10;
+	return (nbr + decimal);
 }
 
-int		ft_putllnbr(long long n, int fd)
+int		ft_uputnbr(long long n, int fd)
 {
 	int i;
 
@@ -50,8 +50,8 @@ int		ft_putllnbr(long long n, int fd)
 	if (n < 0)
 		n = -n;
 	if (n >= 10)
-		i += ft_putllnbr(n / 10, fd);
-	ft_putchar_fd('0' + n % 10, fd);
+		i += ft_uputnbr(n / 10, fd);
+	ft_putchar('0' + n % 10);
 	return (i);
 }
 
@@ -62,7 +62,7 @@ unsigned int	ft_abs(int value)
 	return (value > 0 ? value : -value);
 }
 
-int			ft_print_float(long double nbr, int precision, int fd)
+int			ft_print_float(t_parser *p, long double nbr, int fd)
 {
 	long long	n;
 	int			i;
@@ -70,19 +70,19 @@ int			ft_print_float(long double nbr, int precision, int fd)
 	i = 0;
 	n = (long long)nbr;
 	if (nbr < 0 && ++i)
-		ft_putchar_fd('-', fd);
-	i += ft_putllnbr(n, fd);
-	if (precision == 0)
+		ft_putchar('-');
+	i += ft_uputnbr(n, fd);
+	if (!p->precision)
 		return (i);
-	i += precision + 1;
-	ft_putchar_fd('.', fd);
+	i += p->precision + 1;
+	ft_putchar('.');
 	nbr -= (long long)nbr;
-	while (precision-- != 0)
+	while (p->precision-- > 0)
 	{
 		nbr *= 10;
 		n = (long long)nbr % 10;
 		nbr -= (long long)nbr;
-		ft_putchar_fd('0' + ft_abs(n), fd);
+		ft_putchar('0' + ft_abs(n));
 	}
 	return (i);
 }
@@ -96,10 +96,10 @@ int			handle_float(t_parser *p, va_list args)
 		nbr = va_arg(args, long double);
 	else
 		nbr = va_arg(args, double);
-	printf("va arg [%f]\n", nbr);
-	nbr = round_nbr(p, nbr);
-	printf("round = %f\n", nbr);
-	ret = ft_print_float(nbr, p->precision, 2);
+	if (!(p->f & PRECISION))
+		p->precision = 6;
+	nbr = round_nbr(p, nbr, p->precision);
+	ret = ft_print_float(p, nbr, 2);
 	return (ret);
 }
 
