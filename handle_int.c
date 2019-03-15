@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 19:36:58 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/15 15:32:50 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/15 15:42:04 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ intmax_t	get_int_length(t_parser *p, va_list args)
 	else if (p->f & FLAGS_LL)
 		return ((long long)nbr);
 	else if (p->f & FLAGS_H)
-		return((short)nbr);
+		return ((short)nbr);
 	else if (p->f & FLAGS_L)
-			return ((long)nbr);
+		return ((long)nbr);
 	else if (p->f & FLAGS_J)
 		return (nbr);
 	else if (p->f & FLAGS_Z)
@@ -34,31 +34,30 @@ intmax_t	get_int_length(t_parser *p, va_list args)
 	return (0);
 }
 
-int		print_buffer(char *buf, int len)
+void		print_buffer(char *buf, int len, int *ret)
 {
 	int		i;
-	int		ret;
 
 	i = 0;
-	ret = 0;
-  	while (i < len)
-  	{
-  		ft_putchar(buf[len - i - 1]);
-  		i++;
-  		ret++;
-  	}
-  	return (ret);
+	while (i < len)
+	{
+		ft_putchar(buf[len - i - 1]);
+		i++;
+		(*ret)++;
+	}
 }
 
 void		handle_prec(t_parser *p, char *buf, int *len)
 {
 	while (*len < p->precision && *len < BUFF_SIZE)
-			buf[(*len)++] = '0';
+		buf[(*len)++] = '0';
 	if (!(p->f & LEFT_ALIGN))
 	{
-		if (p->width && (p->f & ZERO_FILL) && (p->f & NEG || (p->f & (PLUS | SPACE))))
+		if (p->width && (p->f & ZERO_FILL) && (p->f & NEG
+			|| (p->f & (PLUS | SPACE))))
 			p->width--;
-		while ((p->f & ZERO_FILL) && (*len + ft_strlen(p->prefix) < p->width) && (*len < BUFF_SIZE))
+		while ((p->f & ZERO_FILL) && (*len + ft_strlen(p->prefix) < p->width)
+			&& (*len < BUFF_SIZE))
 			buf[(*len)++] = '0';
 	}
 }
@@ -85,32 +84,27 @@ void		append_prefix(t_parser *p, char *buf, int *len)
 		buf[(*len)++] = ' ';
 }
 
-int		print_width(t_parser *p, int len, int flag)
+void		print_width(t_parser *p, int len, int *ret, int flag)
 {
 	int		i;
-	int		ret;
 
 	i = len;
-	ret = 0;
 	if (!(p->f & LEFT_ALIGN) && !(p->f & ZERO_FILL) && !flag)
 	{
-			while (i++ < p->width)
-			{
-				ft_putchar(' ');
-				ret++;
-			}
-		return (ret);
+		while (i++ < p->width)
+		{
+			ft_putchar(' ');
+			(*ret)++;
+		}
 	}
 	if (p->f & LEFT_ALIGN && flag)
-  	{
-  		while (i++ < p->width)
-  		{
-  			ft_putchar(' ');
-  			ret++;
-  		}
-  		return (ret);
-  	}
-  	return (0);
+	{
+		while (i++ < p->width)
+		{
+			ft_putchar(' ');
+			(*ret)++;
+		}
+	}
 }
 
 int			handle_int(t_parser *p, va_list args)
@@ -120,21 +114,19 @@ int			handle_int(t_parser *p, va_list args)
 	char		buf[BUF_SIZE];
 	int			len;
 	int			ret;
-	int			i;
 
 	ret = 0;
 	len = -1;
-	i = 0;
 	nbr = get_int_length(p, args);
 	nb_str = itoa_base_long(p, nbr, p->base, "0123456789abcdef");
 	while (nb_str[++len])
 		buf[len] = nb_str[len];
 	handle_prec(p, buf, &len);
 	append_prefix(p, buf, &len);
-	ret += print_width(p, len, 0);
+	print_width(p, len, &ret, 0);
 	if (p->f & CAPSBASE)
 		toUpper(buf);
-  	ret += print_buffer(buf, len);
-  	ret += print_width(p, len, 1);
+	print_buffer(buf, len, &ret);
+	print_width(p, len, &ret, 1);
 	return (ret);
 }
