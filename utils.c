@@ -6,13 +6,13 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 18:08:25 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/15 18:03:52 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/15 19:13:00 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char			*itoa_base_long(t_parser *p, long long int n, int base, char *s_base)
+char	*itoa_base_long(t_parser *p, long long int n, int base, char *s_base)
 {
 	uintmax_t		nb;
 	unsigned int	i;
@@ -21,10 +21,7 @@ char			*itoa_base_long(t_parser *p, long long int n, int base, char *s_base)
 	nb = n;
 	p->slen = ft_nblen(n);
 	if (n < 0)
-	{
-		p->f |= NEG;
 		nb = -n;
-	}
 	if (!(str = ft_strnew(p->slen)))
 		return (0);
 	if (!nb)
@@ -34,8 +31,6 @@ char			*itoa_base_long(t_parser *p, long long int n, int base, char *s_base)
 	}
 	str[p->slen] = '\0';
 	i = 0;
-	if (p->f & ZEROVALUE && ((p->f & PRECISION) && !p->precision) && (!(p->f & PREFIX) || p->format == 'x'))
-		return ("");
 	while (nb)
 	{
 		str[i++] = s_base[nb % base];
@@ -44,7 +39,7 @@ char			*itoa_base_long(t_parser *p, long long int n, int base, char *s_base)
 	return (str);
 }
 
-char			*itoa_base_ulong(t_parser *p, unsigned long long n, int base, char *s_base)
+char	*itoa_base_ulong(t_parser *p, unsigned long long n, int base, char *s_base)
 {
 	unsigned long long	nb;
 	unsigned int		i;
@@ -61,8 +56,6 @@ char			*itoa_base_ulong(t_parser *p, unsigned long long n, int base, char *s_bas
 	}
 	str[p->slen] = '\0';
 	i = 0;
-	if (p->f & ZEROVALUE && ((p->f & PRECISION) && !p->precision) && (!(p->f & PREFIX) || p->format == 'x'))
-		return ("");
 	while (nb)
 	{
 		str[i++] = s_base[nb % base];
@@ -71,7 +64,7 @@ char			*itoa_base_ulong(t_parser *p, unsigned long long n, int base, char *s_bas
 	return (str);
 }
 
-int				get_base(t_parser *p, char c)
+int		get_base(t_parser *p, char c)
 {
 	if (c == 'd' || c == 'i' || c == 'u')
 	{

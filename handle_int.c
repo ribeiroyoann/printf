@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 19:36:58 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/15 15:57:16 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/15 19:09:43 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,11 @@ int			handle_int(t_parser *p, va_list args)
 	ret = 0;
 	len = -1;
 	nbr = get_int_length(p, args);
+	if (nbr < 0)
+		p->f |= NEG;
 	nb_str = itoa_base_long(p, nbr, p->base, "0123456789abcdef");
+	if (nbr == 0 && p->f & ZEROPREC)
+		nb_str = "";
 	while (nb_str[++len])
 		buf[len] = nb_str[len];
 	handle_prec(p, buf, &len);

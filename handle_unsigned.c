@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 15:54:22 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/15 17:51:04 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/15 19:23:50 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void		append_uprefix(t_parser *p, char *buf, int *len)
 		buf[(*len)++] = '+';
 	else if (p->f & SPACE)
 		buf[(*len)++] = ' ';
+	if (p->f & CAPSBASE)
+		ft_strtoupper(buf);
 }
 
 void		handle_uprec(t_parser *p, char *buf, int *len)
@@ -86,14 +88,16 @@ int			handle_unsigned(t_parser *p, va_list args)
 	nbr = get_uint_length(p, args);
 	nb_str = itoa_base_ulong(p, nbr, p->base, "0123456789abcdef");
 	if (!nbr)
+	{
+		if (p->f & ZEROPREC && (p->format != 'o' || !(p->f & PREFIX)))
+			nb_str = "";
 		p->f &= ~PREFIX;
+	}
 	while (nb_str[++len])
 		buf[len] = nb_str[len];
 	handle_uprec(p, buf, &len);
 	append_uprefix(p, buf, &len);
 	print_width(p, len, &ret, 0);
-	if (p->f & CAPSBASE)
-		ft_strtoupper(buf);
 	print_buffer(buf, len, &ret);
 	print_width(p, len, &ret, 1);
 	return (ret);

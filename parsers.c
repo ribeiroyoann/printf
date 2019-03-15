@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 13:53:03 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/11 15:43:27 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/15 18:07:15 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 int		parse_flags(t_parser *p, char **format)
 {
 	(*format)++;
-	while (**format == '-' || **format == '+' || **format == ' ' || **format == '0'
+	while (**format == '-' || **format == '+' || **format == ' '
+		|| **format == '0'
 		|| **format == '#')
 	{
 		if (**format == '-')
