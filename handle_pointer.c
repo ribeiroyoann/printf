@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 16:00:25 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/13 14:28:51 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/15 16:50:19 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ int		handle_pointer(t_parser *p, va_list args)
 	char		buf[BUF_SIZE];
 	int			len;
 	int			ret;
-	int			i;
 
 	ret = 0;
 	len = -1;
@@ -41,15 +40,8 @@ int		handle_pointer(t_parser *p, va_list args)
 	nb_str = ft_strjoin(nb_str, "x0");
 	while (nb_str[++len])
 		buf[len] = nb_str[len];
-	i = len;
-	if (!(p->f & LEFT_ALIGN) && !(p->f & ZERO_FILL))
-		while (i++ < p->width && ++ret)
-			ft_putchar(' ');
-	i = -1;
-	while (++i < len && ++ret)
-		ft_putchar(buf[len - i - 1]);
-	if (p->f & LEFT_ALIGN)
-		while (i++ < p->width && ret++)
-			ft_putchar(' ');
+	print_width(p, len, &ret, 0);
+	print_buffer(buf, len, &ret);
+	print_width(p, len, &ret, 1);
 	return (ret);
 }
