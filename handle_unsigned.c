@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 15:54:22 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/15 16:03:26 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/15 17:51:04 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int			handle_unsigned(t_parser *p, va_list args)
 	append_uprefix(p, buf, &len);
 	print_width(p, len, &ret, 0);
 	if (p->f & CAPSBASE)
-		toUpper(buf);
+		ft_strtoupper(buf);
 	print_buffer(buf, len, &ret);
 	print_width(p, len, &ret, 1);
 	return (ret);

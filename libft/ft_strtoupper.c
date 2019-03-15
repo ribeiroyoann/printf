@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_nb_len.c                                        :+:      :+:    :+:   */
+/*   ft_strtoupper.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yoann <yoann@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/13 11:55:40 by yoann             #+#    #+#             */
-/*   Updated: 2018/12/13 11:57:26 by yoann            ###   ########.fr       */
+/*   Created: 2019/03/15 17:52:17 by yoribeir          #+#    #+#             */
+/*   Updated: 2019/03/15 17:52:27 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-unsigned int        ft_nb_len(int n)
+char	*ft_strtoupper(char *str)
 {
-    unsigned int    count;
+	size_t len;
+	size_t i;
 
-    count = 1;
-    while (n /= 10)
-        count++;
-    return (count);
+	len = ft_strlen(str);
+	i = 0;
+	while (i < len)
+	{
+		if (str[i] >= 'a' && str[i] <= 'z')
+			str[i] = str[i] - 'a' + 'A';
+		i++;
+	}
+	return (str);
 }

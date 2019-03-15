@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 17:57:41 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/13 18:33:09 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/15 16:34:55 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,28 +115,18 @@ int			handle_wstring(t_parser *p, va_list args)
 	if (p->f & PRECISION)
 		len = (len < p->precision ? len : p->precision);
 	if (!(p->f & LEFT_ALIGN))
-	{
 		while (len < p->width)
 		{
 			ft_putchar(' ');
 			i++;
 			len++;
 		}
-	}
 	while ((*str && (!(p->f & PRECISION) || p->precision--)))
 	{
 		ft_putwchar(*str);
 		str++;
 		i++;
 	}
-	if (p->f & LEFT_ALIGN)
-	{
-		while (len < p->width)
-		{
-			ft_putchar(' ');
-			len++;
-			i++;
-		}
-	}
+	print_width(p, len, &i, 1);
 	return (i);
 }

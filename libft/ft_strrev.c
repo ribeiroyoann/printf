@@ -1,27 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/17 13:27:01 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/15 16:50:02 by yoribeir         ###   ########.fr       */
+/*   Created: 2019/03/15 18:03:21 by yoribeir          #+#    #+#             */
+/*   Updated: 2019/03/15 18:03:31 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <limits.h>
+#include "libft.h"
 
-#include <locale.h>
-#include <wchar.h>
-
-int		main(int argc, char **argv)
+char	*ft_strrev(char *str)
 {
-	int *a = NULL;
+	int		i;
+	int		length;
+	char	buff;
 
-	ft_printf("%.5p\n", a);
-	printf("\n");
-	printf("%.5p\n", a);
- 	return (0);
+	i = 0;
+	length = ft_strlen(str);
+	while (length - 1 > i)
+	{
+		buff = str[i];
+		str[i] = str[length - 1];
+		str[length - 1] = buff;
+		length--;
+		i++;
+	}
+	return (str);
 }

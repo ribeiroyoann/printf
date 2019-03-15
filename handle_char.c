@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/19 17:38:56 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/14 16:06:43 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/15 16:32:56 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,6 @@ int			handle_char(t_parser *p, va_list args)
 		ft_putchar(buf[len - i - 1]);
 		ret++;
 	}
-	if (p->f & LEFT_ALIGN)
-	{
-		while (i < p->width)
-		{
-			ft_putchar(' ');
-			ret++;
-			i++;
-		}
-	}
+	print_width(p, len, &ret, 1);
 	return (ret);
 }

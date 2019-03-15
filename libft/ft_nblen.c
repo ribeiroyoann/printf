@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_nblen.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/17 13:27:01 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/15 16:50:02 by yoribeir         ###   ########.fr       */
+/*   Created: 2019/03/15 17:56:06 by yoribeir          #+#    #+#             */
+/*   Updated: 2019/03/15 17:56:14 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <limits.h>
+#include "libft.h"
 
-#include <locale.h>
-#include <wchar.h>
-
-int		main(int argc, char **argv)
+unsigned int	ft_nblen(unsigned long long n)
 {
-	int *a = NULL;
+	unsigned int	count;
 
-	ft_printf("%.5p\n", a);
-	printf("\n");
-	printf("%.5p\n", a);
- 	return (0);
+	count = 1;
+	while (n /= 10)
+		count++;
+	return (count);
 }

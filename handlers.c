@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 17:34:00 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/13 17:15:12 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/15 17:07:06 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,12 @@ void		set_jumptable(t_jumptable handlers[128])
 
 t_jumptable	init_table(char c)
 {
-	t_jumptable		handlers[128] = {NULL};
+	static t_jumptable		handlers[128];
 
+	handlers['d'] = NULL;
 	if (!handlers['d'])
 		set_jumptable(handlers);
-	if (ft_isascii(c))
+	if (ft_isascii(c) && handlers[(int)c])
 		return (handlers[(int)c]);
 	else
 		return (NULL);

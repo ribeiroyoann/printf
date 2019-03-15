@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 15:57:50 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/13 16:08:11 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/15 17:16:57 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@
 #define CYN   "\x1B[36m"
 #define WHT   "\x1B[37m"
 #define RESET "\x1B[0m"
-
 
 
 #define	LEFT_ALIGN	(1 << 0)
@@ -59,10 +58,12 @@ typedef	struct	s_parser
 	int			width;
 	int			precision;
 	int			len;
+	int			slen;
 	int			base;
 	long		f;
 	char		*prefix;
 	char		format;
+	char		*buf;
 }				t_parser;
 
 typedef		int (*t_jumptable)(t_parser *p, va_list args);
@@ -110,7 +111,12 @@ char                *itoa_base_long(t_parser *p, long long n, int base, char *s_
 char				*itoa_base_ulong(t_parser *p, unsigned long long n, int base, char *s_base);
 int    			 	get_base(t_parser *p, char c);
 
-char *toUpper(char *str);
+char			*ft_strtoupper(char *str);
 char    *ft_strrev(char *str);
 int		ft_putwchar(wchar_t chr);
+
+// REFACTORING
+
+void		print_buffer(char *buf, int len, int *ret);
+void		print_width(t_parser *p, int len, int *ret, int flag);
 #endif

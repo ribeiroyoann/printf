@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 19:36:58 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/15 15:42:04 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/15 15:57:16 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,8 +124,6 @@ int			handle_int(t_parser *p, va_list args)
 	handle_prec(p, buf, &len);
 	append_prefix(p, buf, &len);
 	print_width(p, len, &ret, 0);
-	if (p->f & CAPSBASE)
-		toUpper(buf);
 	print_buffer(buf, len, &ret);
 	print_width(p, len, &ret, 1);
 	return (ret);
