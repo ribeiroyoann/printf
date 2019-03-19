@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 15:57:50 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/15 19:08:29 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/19 16:27:06 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ typedef	struct	s_parser
 	int			slen;
 	int			base;
 	long		f;
+	char		*s;
 	char		*prefix;
 	char		format;
 	char		*buf;

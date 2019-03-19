@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 15:54:22 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/19 16:00:21 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/19 16:31:14 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ void		handle_uprec(t_parser *p, char *buf, int *len)
 int			handle_unsigned(t_parser *p, va_list args)
 {
 	uintmax_t	nbr;
-	char		*nb_str;
 	char		buf[BUF_SIZE];
 	int			len;
 	int			ret;
@@ -86,24 +85,24 @@ int			handle_unsigned(t_parser *p, va_list args)
 	ret = 0;
 	len = -1;
 	nbr = get_uint_length(p, args);
-	nb_str = itoa_base_ulong(p, nbr, p->base, "0123456789abcdef");
+	p->s = itoa_base_ulong(p, nbr, p->base, "0123456789abcdef");
 	if (!nbr)
 	{
 		if (p->f & ZEROPREC && (p->format != 'o' || !(p->f & PREFIX)))
 		{
 			p->f &= ~ZERO_FILL;
-			nb_str = "";
+			p->s = "";
 		}
 		p->f &= ~PREFIX;
 	}
-	while (nb_str[++len])
-		buf[len] = nb_str[len];
+	while (p->s[++len])
+		buf[len] = p->s[len];
 	handle_uprec(p, buf, &len);
 	append_uprefix(p, buf, &len);
 	print_width(p, len, &ret, 0);
 	print_buffer(buf, len, &ret);
 	print_width(p, len, &ret, 1);
-	if (nb_str && !(p->f & ZEROVALUE))
-		free(nb_str);
+	if (p->s && !(p->f & ZEROPREC))
+		free(p->s);
 	return (ret);
 }

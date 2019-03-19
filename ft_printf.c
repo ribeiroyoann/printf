@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 16:10:34 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/19 15:58:03 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/19 16:30:28 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	init_parser(t_parser *p)
 	p->f = 0;
 	p->base = 0;
 	p->slen = 0;
+	p->s = NULL;
 }
 
 void	apply_spec_flags(t_parser *p, char c)
@@ -39,6 +40,7 @@ void	apply_spec_flags(t_parser *p, char c)
 
 int		parser(t_parser *p, char **format)
 {
+	init_parser(p);
 	parse_flags(p, format);
 	parse_width(p, format);
 	parse_precision(p, format);
@@ -66,7 +68,6 @@ int		process(va_list args, const char *format)
 	t_jumptable	jt;
 
 	p = malloc(sizeof(t_parser));
-	init_parser(p);
 	ret = 0;
 	while (*format != '\0')
 	{

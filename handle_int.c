@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 19:36:58 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/19 16:09:48 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/19 16:30:49 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,6 @@ void		print_width(t_parser *p, int len, int *ret, int flag)
 int			handle_int(t_parser *p, va_list args)
 {
 	intmax_t	nbr;
-	char		*nb_str;
 	char		buf[BUF_SIZE];
 	int			len;
 	int			ret;
@@ -120,17 +119,17 @@ int			handle_int(t_parser *p, va_list args)
 	nbr = get_int_length(p, args);
 	if (nbr < 0)
 		p->f |= NEG;
-	nb_str = itoa_base_long(p, nbr, p->base, "0123456789abcdef");
+	p->s = itoa_base_long(p, nbr, p->base, "0123456789abcdef");
 	if (nbr == 0 && p->f & ZEROPREC)
-		nb_str = "";
-	while (nb_str[++len])
-		buf[len] = nb_str[len];
+		p->s = "";
+	while (p->s[++len])
+		buf[len] = p->s[len];
 	handle_prec(p, buf, &len);
 	append_prefix(p, buf, &len);
 	print_width(p, len, &ret, 0);
 	print_buffer(buf, len, &ret);
 	print_width(p, len, &ret, 1);
-	if (nb_str && !(p->f & ZEROVALUE))
-		free(nb_str);
+	if (p->s && !(p->f & ZEROPREC))
+		free(p->s);
 	return (ret);
 }
