@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strjoinfree.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/17 13:27:01 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/19 12:54:49 by yoribeir         ###   ########.fr       */
+/*   Created: 2019/03/19 12:57:15 by yoribeir          #+#    #+#             */
+/*   Updated: 2019/03/19 12:57:31 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <limits.h>
+#include "libft.h"
 
-#include <locale.h>
-#include <wchar.h>
-
-int		main(int argc, char **argv)
+char	*ft_strjoinfree(char *s1, char *s2)
 {
-	int ret;
+	char	*str;
 
-
-	setlocale(LC_ALL, "");
-	ret = ft_printf("{%0-3d}", 0);
-	printf("\n%d\n", ret);
-	printf("\n");
-	ret = printf("{%0-3d}", 0);
-	printf("\n%d\n", ret);
- 	return (0);
+	if (!s1 || !s2)
+		return (0);
+	if (!(str = ft_strnew(ft_strlen(s1) + ft_strlen(s2))))
+		return (0);
+	ft_strcpy(str, s1);
+	free(s1);
+	ft_strcat(str, s2);
+	return (str);
 }
-

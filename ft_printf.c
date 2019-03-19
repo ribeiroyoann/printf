@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 16:10:34 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/19 11:56:51 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/19 12:51:12 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	init_parser(t_parser *p)
 	p->precision = 0;
 	p->f = 0;
 	p->base = 0;
+	p->slen = 0;
 }
 
 void	apply_spec_flags(t_parser *p, char c)
@@ -43,7 +44,8 @@ int		parser(t_parser *p, char **format)
 	parse_precision(p, format);
 	parse_length(p, format);
 	p->format = **format;
-	if (p->format == 'O' || p->format == 'U' || p->format == 'D')
+	if (p->format == 'O' || p->format == 'U' || p->format == 'D'
+		|| p->format == 'F')
 	{
 		if (p->format == 'U')
 			p->f |= UMAJ;
@@ -83,6 +85,7 @@ int		process(va_list args, const char *format)
 		}
 		format++;
 	}
+	free(p);
 	return (ret);
 }
 
