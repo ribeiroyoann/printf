@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 13:53:03 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/19 11:15:36 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/19 15:01:25 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,38 +73,30 @@ int		parse_precision(t_parser *p, char **format)
 
 void	parse_length(t_parser *p, char **format)
 {
-	if (**format == 'l')
+	if (!(ft_strncmp(*format, "ll", 2)))
 	{
-		(*format)++;
-		p->f |= FLAGS_L;
-		if (**format == 'l')
-		{
-			p->f |= FLAGS_LL;
-			(*format)++;
-		}
+		p->f |= FLAGS_LL;
+		*format += 2;
+		return ;
+	}
+	else if (!(ft_strncmp(*format, "hh", 2)))
+	{
+		p->f |= FLAGS_HH;
+		*format += 2;
+		return ;
 	}
 	else if (**format == 'h')
-	{
-		(*format)++;
 		p->f |= FLAGS_H;
-		if (**format == 'h')
-		{
-			p->f |= FLAGS_HH;
-			(*format)++;
-		}
-	}
+	else if (**format == 'l')
+		p->f |= FLAGS_L;
 	else if (**format == 'j')
-	{
-		(*format)++;
 		p->f |= FLAGS_J;
-	}
 	else if (**format == 'z')
-	{
-		(*format)++;
 		p->f |= FLAGS_Z;
-	}
 	else
 		p->f |= NONE;
+	if (!(p->f & NONE))
+		(*format)++;
 }
 
 char	*get_prefix(t_parser *p, char c)
