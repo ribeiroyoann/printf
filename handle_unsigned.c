@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 15:54:22 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/19 14:39:38 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/19 16:00:21 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,10 @@ int			handle_unsigned(t_parser *p, va_list args)
 	if (!nbr)
 	{
 		if (p->f & ZEROPREC && (p->format != 'o' || !(p->f & PREFIX)))
+		{
+			p->f &= ~ZERO_FILL;
 			nb_str = "";
+		}
 		p->f &= ~PREFIX;
 	}
 	while (nb_str[++len])

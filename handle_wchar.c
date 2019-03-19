@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 17:57:41 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/19 12:24:43 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/19 15:42:27 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int		handle_wchar(t_parser *p, va_list args)
 	int			len;
 	int			i;
 
-	(void)p;
 	ret = 0;
 	chr = va_arg(args, wchar_t);
 	len = wcharlen(chr);
@@ -83,6 +82,7 @@ int		handle_wchar(t_parser *p, va_list args)
 		while (i++ < p->width)
 		{
 			ft_putchar(' ');
+			ret++;
 		}
 	}
 	return (ret);
@@ -98,6 +98,19 @@ size_t	ft_wstrlen(const int *str)
 	return (i);
 }
 
+int		*handle_nullstring(int *str)
+{
+	str = malloc(sizeof(int) * 7);
+	str[0] = '(';
+	str[1] = 'n';
+	str[2] = 'u';
+	str[3] = 'l';
+	str[4] = 'l';
+	str[5] = ')';
+	str[6] = '\0';
+	return (str);
+}
+
 int			handle_wstring(t_parser *p, va_list args)
 {
 	int		*str;
@@ -107,10 +120,7 @@ int			handle_wstring(t_parser *p, va_list args)
 	i = 0;
 	str = va_arg(args, int*);
 	if (!str)
-	{
-		ft_putstr("(null)");
-		return (6);
-	}
+		str = handle_nullstring(str);
 	len = ft_wstrlen(str);
 	if (p->f & PRECISION)
 		len = (len < p->precision ? len : p->precision);
