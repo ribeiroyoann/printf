@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 15:54:22 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/19 12:49:40 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/19 14:39:38 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int			handle_unsigned(t_parser *p, va_list args)
 	print_width(p, len, &ret, 0);
 	print_buffer(buf, len, &ret);
 	print_width(p, len, &ret, 1);
-	if (nb_str)
+	if (nb_str && !(p->f & ZEROVALUE))
 		free(nb_str);
 	return (ret);
 }
