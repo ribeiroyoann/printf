@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 17:57:41 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/15 16:34:55 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/19 11:50:36 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,9 +123,9 @@ int			handle_wstring(t_parser *p, va_list args)
 		}
 	while ((*str && (!(p->f & PRECISION) || p->precision--)))
 	{
-		ft_putwchar(*str);
+		i += ft_putwchar(*str);
 		str++;
-		i++;
+		// i++;
 	}
 	print_width(p, len, &i, 1);
 	return (i);

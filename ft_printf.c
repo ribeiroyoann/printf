@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 16:10:34 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/15 19:11:49 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/19 11:56:51 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ int		parser(t_parser *p, char **format)
 	p->base = get_base(p, p->format);
 	p->prefix = get_prefix(p, p->format);
 	apply_spec_flags(p, p->format);
+	if (p->f & FLAGS_L && (p->format == 'c' || p->format == 's'))
+		p->format -= 32;
 	return (0);
 }
 
@@ -69,7 +71,7 @@ int		process(va_list args, const char *format)
 		if (*format == '%')
 		{
 			parser(p, (char **)&format);
-			jt = init_table(*format);
+			jt = init_table(p->format);
 			if (jt)
 				ret += jt(p, args);
 			init_parser(p);

@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 13:27:01 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/15 19:26:19 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/19 11:52:44 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,15 @@
 
 int		main(int argc, char **argv)
 {
-	ft_printf("%#.o", '\\xff');
+	int ret;
+
+
+	setlocale(LC_ALL, "");
+	ret = ft_printf("%lc, %lc", L'ÊM-^ZM-^V', L'ÿ≠');
+	printf("\n%d\n", ret);
 	printf("\n");
-	printf("%#.o", '\\xff');
-	printf("\n");
-	ft_printf("%#.o", 0);
-	printf("\n");
-	printf("%#.o", 0);
-	printf("\n-----------\n");
-	ft_printf("%.o %.0o", 0, 0);
-	printf("\n");
-	printf("%.o %.0o", 0, 0);
+	ret = printf("%lc, %lc", L'ÊM-^ZM-^V', L'ÿ≠');
+	printf("\n%d\n", ret);
  	return (0);
 }
+
