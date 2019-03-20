@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 15:57:50 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/19 16:27:06 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/20 14:29:11 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int				handle_float(t_parser *p, va_list args);
 */
 
 char			*itoa_base_long(t_parser *p, long long n, int base, char *s_base);
-char			*itoa_base_ulong(t_parser *p, unsigned long long n, int base, char *s_base);
+char			*itoa_base_ulong(t_parser *p, uintmax_t n, int base, char *s_base);
 int				get_base(t_parser *p, char c);
 
 int				ft_putwchar(wchar_t chr);
@@ -113,4 +113,5 @@ int				ft_putwchar(wchar_t chr);
 
 void		print_buffer(char *buf, int len, int *ret);
 void		print_width(t_parser *p, int len, int *ret, int flag);
+void		print_strwidth(t_parser *p, int len, int *ret);
 #endif

@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 17:57:41 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/19 16:28:57 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/20 14:35:31 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,9 @@ size_t	ft_wstrlen(const int *str)
 	return (i);
 }
 
-int		*handle_nullstring(int *str)
+int		*handle_nullstring(t_parser *p, int *str)
 {
+	p->f |= ZEROVALUE;
 	str = malloc(sizeof(int) * 7);
 	str[0] = '(';
 	str[1] = 'n';
@@ -114,28 +115,26 @@ int		*handle_nullstring(int *str)
 int			handle_wstring(t_parser *p, va_list args)
 {
 	int		*str;
+	int		*tmp;
 	int		len;
 	int		i;
 
 	i = 0;
 	str = va_arg(args, int*);
 	if (!str)
-		str = handle_nullstring(str);
+		str = handle_nullstring(p, str);
+	tmp = str;
 	len = ft_wstrlen(str);
 	if (p->f & PRECISION)
 		len = (len < p->precision ? len : p->precision);
-	if (!(p->f & LEFT_ALIGN))
-		while (len < p->width)
-		{
-			ft_putchar(' ');
-			i++;
-			len++;
-		}
+	print_strwidth(p, len, &i);
 	while ((*str && (!(p->f & PRECISION) || p->precision--)))
 	{
 		i += ft_putwchar(*str);
 		str++;
 	}
 	print_width(p, len, &i, 1);
+	if (p->f & ZEROVALUE)
+		free(tmp);
 	return (i);
 }

@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 18:08:25 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/19 12:19:23 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/20 14:25:22 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ char	*itoa_base_long(t_parser *p, long long int n, int base, char *s_base)
 	return (str);
 }
 
-char	*itoa_base_ulong(t_parser *p, unsigned long long n, int base, char *s_base)
+char	*itoa_base_ulong(t_parser *p, uintmax_t n, int base, char *s_base)
 {
-	unsigned long long	nb;
+	uintmax_t	nb;
 	unsigned int		i;
 	char				*str;
 
