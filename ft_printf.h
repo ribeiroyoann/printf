@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 15:57:50 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/20 15:48:46 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/20 17:43:05 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,44 +15,33 @@
 
 # include "libft/libft.h"
 # include <stdarg.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <stdint.h>
+# include <stdio.h>
+# include <stdlib.h>
+# include <stdint.h>
 
+# define LEFT_ALIGN	(1 << 0)
+# define SPACE		(1 << 1)
+# define PLUS		(1 << 2)
+# define ZERO_FILL	(1 << 3)
+# define PREFIX		(1 << 4)
 
-#define RED   "\x1B[31m"
-#define GRN   "\x1B[32m"
-#define YEL   "\x1B[33m"
-#define BLU   "\x1B[34m"
-#define MAG   "\x1B[35m"
-#define CYN   "\x1B[36m"
-#define WHT   "\x1B[37m"
-#define RESET "\x1B[0m"
+# define NONE			(1 << 5)
+# define FLAGS_HH		(1 << 6)
+# define FLAGS_H		(1 << 7)
+# define FLAGS_L		(1 << 8)
+# define FLAGS_LL		(1 << 9)
+# define FLAGS_J		(1 << 10)
+# define FLAGS_Z		(1 << 11)
 
+# define NEG			(1 << 12)
+# define CAPSBASE		(1 << 13)
+# define UNSIGNED		(1 << 14)
+# define PRECISION		(1 << 15)
+# define ZEROVALUE		(1 << 16)
+# define UMAJ			(1 << 17)
+# define ZEROPREC		(1 << 18)
 
-#define	LEFT_ALIGN	(1 << 0)
-#define	SPACE 		(1 << 1)
-#define	PLUS		(1 << 2)
-#define	ZERO_FILL	(1 << 3)
-#define	PREFIX		(1 << 4)
-
-#define NONE		(1 << 5)
-#define FLAGS_HH	(1 << 6)
-#define FLAGS_H		(1 << 7)
-#define FLAGS_L		(1 << 8)
-#define FLAGS_LL	(1 << 9)
-#define	FLAGS_J		(1 << 10)
-#define FLAGS_Z		(1 << 11)
-
-#define NEG			(1 << 12)
-#define CAPSBASE	(1 << 13)
-#define UNSIGNED	(1 << 14)
-#define PRECISION	(1 << 15)
-#define ZEROVALUE	(1 << 16)
-#define UMAJ		(1 << 17)
-#define ZEROPREC	(1 << 18)
-
-#define BUF_SIZE 512
+# define BUF_SIZE 512
 
 typedef	struct	s_parser
 {
@@ -68,7 +57,7 @@ typedef	struct	s_parser
 	char		*buf;
 }				t_parser;
 
-typedef			int (*t_jumptable)(t_parser *p, va_list args);
+typedef	int	(*t_jumptable)(t_parser *p, va_list args);
 int				ft_printf(const char *format, ...);
 
 /*
@@ -78,7 +67,6 @@ int				ft_printf(const char *format, ...);
 int				parse_flags(t_parser *p, char **format);
 int				parse_width(t_parser *p, char **format);
 int				parse_precision(t_parser *p, char **format);
-
 void			parse_length(t_parser *p, char **format);
 char			*get_prefix(t_parser *p, char c);
 
@@ -99,20 +87,18 @@ int				handle_wchar(t_parser *p, va_list args);
 int				handle_wstring(t_parser *p, va_list args);
 int				handle_float(t_parser *p, va_list args);
 
+void			print_buffer(char *buf, int len, int *ret);
+void			print_width(t_parser *p, int len, int *ret, int flag);
+void			print_strwidth(t_parser *p, int len, int *ret);
+
 /*
 ** UTILS
 */
 
-char			*itoa_base_long(t_parser *p, long long n, int base, char *s_base);
-char			*itoa_base_ulong(t_parser *p, uintmax_t n, int base, char *s_base);
+char			*itoa_base_long(t_parser *p, long long n, int base, char *s);
+char			*itoa_base_ulong(t_parser *p, uintmax_t n, int base, char *s);
 int				get_base(t_parser *p, char c);
+void			ft_putwchar(wchar_t chr);
+size_t			ft_wstrlen(const int *str);
 
-void				ft_putwchar(wchar_t chr);
-size_t	ft_wstrlen(const int *str);
-
-// REFACTORING
-
-void		print_buffer(char *buf, int len, int *ret);
-void		print_width(t_parser *p, int len, int *ret, int flag);
-void		print_strwidth(t_parser *p, int len, int *ret);
 #endif
