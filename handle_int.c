@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 19:36:58 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/19 16:30:49 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/20 15:49:12 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,19 +32,6 @@ intmax_t	get_int_length(t_parser *p, va_list args)
 	else if (p->f & FLAGS_Z)
 		return ((size_t)nbr);
 	return (0);
-}
-
-void		print_buffer(char *buf, int len, int *ret)
-{
-	int		i;
-
-	i = 0;
-	while (i < len)
-	{
-		ft_putchar(buf[len - i - 1]);
-		i++;
-		(*ret)++;
-	}
 }
 
 void		handle_prec(t_parser *p, char *buf, int *len)

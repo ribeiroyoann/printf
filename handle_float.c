@@ -6,19 +6,33 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:51:20 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/14 15:56:55 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/20 16:45:56 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <limits.h>
 
+int				calc_decimal(long double decimal, int precision, int pos)
+{
+	int	i;
+
+	i = 0;
+	while (precision-- > 0 && ++i)
+	{
+		if ((int)decimal == 9 || (int)decimal == -9)
+			pos = i;
+		decimal = decimal - (long long)decimal;
+		decimal *= 10;
+	}
+	return (pos);
+}
+
 long double		round_nbr(t_parser *p, long double nbr, int precision)
 {
 	long long	integer;
 	long double	decimal;
-	int			i;
-	int			last;
+	int			pos;
 
 	if (precision == 0)
 	{
@@ -26,23 +40,20 @@ long double		round_nbr(t_parser *p, long double nbr, int precision)
 		return (nbr + (integer % 10 >= 5));
 	}
 	decimal = (nbr - (long long)nbr) * 10;
-	i = 0;
-	last = -1;
-	while (precision-- > 0 && ++i)
-	{
-		if ((int)decimal == 9 || (int)decimal == -9)
-			last = i;
-		decimal = decimal - (long long)decimal;
-		decimal *= 10;
-	}
-	decimal = last == -1 ? 0 : 0.1;
-	decimal = nbr <= -0.0 ? -decimal : decimal;
-	while (last-- > 0)
+	pos = -1;
+	pos = calc_decimal(decimal, precision, pos);
+	if (pos == -1)
+		decimal = 0;
+	else
+		decimal = 0.1;
+	if (nbr <= -0.0)
+		decimal = -decimal;
+	while (pos-- > 0)
 		decimal /= 10;
 	return (nbr + decimal);
 }
 
-int		ft_uputnbr(long long n, int fd)
+int				ft_uputnbr(long long n, int fd)
 {
 	int i;
 
@@ -55,14 +66,7 @@ int		ft_uputnbr(long long n, int fd)
 	return (i);
 }
 
-unsigned int	ft_abs(int value)
-{
-	if (value == INT_MIN)
-		return ((unsigned int)INT_MAX + 1);
-	return (value > 0 ? value : -value);
-}
-
-int			ft_print_float(t_parser *p, long double nbr, int fd)
+int				ft_print_float(t_parser *p, long double nbr, int fd)
 {
 	long long	n;
 	int			i;
@@ -87,10 +91,10 @@ int			ft_print_float(t_parser *p, long double nbr, int fd)
 	return (i);
 }
 
-int			handle_float(t_parser *p, va_list args)
+int				handle_float(t_parser *p, va_list args)
 {
-	double	nbr;
-	int		ret;
+	long double	nbr;
+	int			ret;
 
 	if (p->f & FLAGS_L)
 		nbr = va_arg(args, long double);
@@ -102,4 +106,3 @@ int			handle_float(t_parser *p, va_list args)
 	ret = ft_print_float(p, nbr, 2);
 	return (ret);
 }
-

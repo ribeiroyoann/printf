@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 15:54:22 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/20 14:57:37 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/20 15:46:13 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void		handle_uprec(t_parser *p, char *buf, int *len)
 			buf[(*len)++] = '0';
 	}
 }
+
 void		handle_nullnbr(t_parser *p)
 {
 	if (p->f & ZEROPREC && (p->format != 'o' || !(p->f & PREFIX)))

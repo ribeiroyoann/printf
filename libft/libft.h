@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 16:29:08 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/19 12:57:57 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/20 16:42:12 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,6 @@ unsigned int		ft_nblen(unsigned long long n);
 char				*ft_strpbrk(const char *s1, const char *s2);
 char				*ft_strrev(char *str);
 char				*ft_strjoinfree(char *s1, char *s2);
+unsigned int		ft_abs(int value);
 
 #endif
