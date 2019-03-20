@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 15:54:22 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/20 15:46:13 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/20 19:26:13 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ void		handle_uprec(t_parser *p, char *buf, int *len)
 	int		prefixlen;
 
 	prefixlen = ft_strlen(get_prefix(p, p->format));
-	while ((*len + prefixlen < p->precision) && (*len < BUF_SIZE))
+	// prefixlen = 0;
+	while ((*len < p->precision) && (*len < BUF_SIZE))
 		buf[(*len)++] = '0';
 	if (!(p->f & LEFT_ALIGN))
 	{
@@ -105,7 +106,8 @@ int			handle_unsigned(t_parser *p, va_list args)
 	if (tmp)
 		free(tmp);
 	handle_uprec(p, buf, &len);
-	append_uprefix(p, buf, &len);
+	if (len < p->precision && p->precision > 0) //nik
+		append_uprefix(p, buf, &len);
 	print_width(p, len, &ret, 0);
 	print_buffer(buf, len, &ret);
 	print_width(p, len, &ret, 1);
