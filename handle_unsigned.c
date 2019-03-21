@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 15:54:22 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/20 19:29:31 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/21 13:31:58 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,19 @@ void		handle_uprec(t_parser *p, char *buf, int *len)
 	}
 }
 
-void		handle_nullnbr(t_parser *p)
+void		handle_nullnbr(t_parser *p, uintmax_t nbr)
 {
-	if (p->f & ZEROPREC && (p->format != 'o' || !(p->f & PREFIX)))
+	if (!nbr)
 	{
-		p->f &= ~ZERO_FILL;
-		p->s = "";
+		if (p->f & ZEROPREC && (p->format != 'o' || !(p->f & PREFIX)))
+		{
+			p->f &= ~ZERO_FILL;
+			p->s = "";
+		}
+		p->f &= ~PREFIX;
 	}
-	p->f &= ~PREFIX;
+	// if (p->f & ZEROPREC && p->format == 'u')
+	// 	p->f &= ~ZERO_FILL;
 }
 
 int			handle_unsigned(t_parser *p, va_list args)
@@ -99,14 +104,13 @@ int			handle_unsigned(t_parser *p, va_list args)
 	nbr = get_uint_length(p, args);
 	p->s = itoa_base_ulong(p, nbr, p->base, "0123456789abcdef");
 	tmp = p->s;
-	if (!nbr)
-		handle_nullnbr(p);
+	handle_nullnbr(p, nbr);
 	while (p->s[++len])
 		buf[len] = p->s[len];
 	if (tmp)
 		free(tmp);
 	handle_uprec(p, buf, &len);
-	if (len != p->precision)
+	if (len != p->precision || p->format != 'o')
 		append_uprefix(p, buf, &len);
 	print_width(p, len, &ret, 0);
 	print_buffer(buf, len, &ret);

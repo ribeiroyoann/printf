@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 19:36:58 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/20 15:49:12 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/21 13:38:35 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ intmax_t	get_int_length(t_parser *p, va_list args)
 
 void		handle_prec(t_parser *p, char *buf, int *len)
 {
-	while (*len < p->precision && *len < BUFF_SIZE)
+	while (*len < p->precision && *len < BUF_SIZE)
 		buf[(*len)++] = '0';
 	if (!(p->f & LEFT_ALIGN))
 	{
@@ -44,7 +44,7 @@ void		handle_prec(t_parser *p, char *buf, int *len)
 			|| (p->f & (PLUS | SPACE))))
 			p->width--;
 		while ((p->f & ZERO_FILL) && (*len + ft_strlen(p->prefix) < p->width)
-			&& (*len < BUFF_SIZE))
+			&& (*len < BUF_SIZE))
 			buf[(*len)++] = '0';
 	}
 }
