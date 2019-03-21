@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 17:57:41 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/20 15:48:47 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/21 14:12:52 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,11 @@ int		handle_wchar(t_parser *p, va_list args)
 	ft_putwchar(chr);
 	ret += wcharlen(chr);
 	if (p->f & LEFT_ALIGN)
-	{
 		while (i++ < p->width)
 		{
 			ft_putchar(' ');
 			ret++;
 		}
-	}
 	return (ret);
 }
 

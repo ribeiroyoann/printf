@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 19:36:58 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/21 13:38:35 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/21 14:10:15 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,14 +55,12 @@ void		append_prefix(t_parser *p, char *buf, int *len)
 
 	i = 0;
 	if (p->f & PREFIX && !(p->f & ZEROVALUE))
-	{
 		while (p->prefix[i])
 		{
 			buf[*len] = p->prefix[i];
 			(*len)++;
 			i++;
 		}
-	}
 	if (p->f & NEG)
 		buf[(*len)++] = '-';
 	else if (p->f & PLUS)
@@ -77,21 +75,17 @@ void		print_width(t_parser *p, int len, int *ret, int flag)
 
 	i = len;
 	if (!(p->f & LEFT_ALIGN) && !(p->f & ZERO_FILL) && !flag)
-	{
 		while (i++ < p->width)
 		{
 			ft_putchar(' ');
 			(*ret)++;
 		}
-	}
 	if (p->f & LEFT_ALIGN && flag)
-	{
 		while (i++ < p->width)
 		{
 			ft_putchar(' ');
 			(*ret)++;
 		}
-	}
 }
 
 int			handle_int(t_parser *p, va_list args)

@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 15:57:50 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/20 17:43:05 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/21 14:20:50 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ int				handle_float(t_parser *p, va_list args);
 void			print_buffer(char *buf, int len, int *ret);
 void			print_width(t_parser *p, int len, int *ret, int flag);
 void			print_strwidth(t_parser *p, int len, int *ret);
+void			handle_uprec(t_parser *p, char *buf, int *len);
+void			append_uprefix(t_parser *p, char *buf, int *len);
 
 /*
 ** UTILS
