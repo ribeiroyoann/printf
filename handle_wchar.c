@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/12 17:57:41 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/21 14:12:52 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/28 15:06:40 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ void	ft_putwchar(wchar_t chr)
 int		*handle_nullstring(t_parser *p, int *str)
 {
 	p->f |= ZEROVALUE;
-	str = malloc(sizeof(int) * 7);
+	if (!(str = malloc(sizeof(int) * 7)))
+		return (0);
 	str[0] = '(';
 	str[1] = 'n';
 	str[2] = 'u';

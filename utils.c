@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 18:08:25 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/20 15:49:35 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/28 17:46:50 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*itoa_base_long(t_parser *p, long long int n, int base, char *s_base)
 	char			*str;
 
 	nb = n;
-	p->slen = ft_nblen(n);
+	p->slen = ft_nblen(n, base);
 	if (n < 0)
 		nb = -n;
 	if (!(str = ft_strnew(p->slen)))
@@ -46,7 +46,7 @@ char	*itoa_base_ulong(t_parser *p, uintmax_t n, int base, char *s_base)
 	char				*str;
 
 	nb = n;
-	p->slen = ft_nblen(n);
+	p->slen = ft_nblen(n, base);
 	if (!(str = ft_strnew(p->slen)))
 		return (0);
 	if (!nb)

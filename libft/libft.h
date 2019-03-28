@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 16:29:08 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/20 16:42:12 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/28 17:46:33 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ t_list				*ft_lstat(t_list *lst, unsigned int nbr);
 char				*ft_strndup(char const *src, int n);
 int					get_next_line(const int fd, char **line);
 char				*ft_strtoupper(char *str);
-unsigned int		ft_nblen(unsigned long long n);
+unsigned int		ft_nblen(unsigned long long n, int base);
 char				*ft_strpbrk(const char *s1, const char *s2);
 char				*ft_strrev(char *str);
 char				*ft_strjoinfree(char *s1, char *s2);

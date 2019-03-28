@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 15:54:22 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/21 14:10:28 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/28 19:22:40 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ uintmax_t	get_uint_length(t_parser *p, va_list args)
 	else if (p->f & FLAGS_LL)
 		return ((unsigned long long)nbr);
 	else if (p->f & FLAGS_H)
-		return ((unsigned int)nbr);
+		return ((unsigned short)nbr);
 	else if (p->f & FLAGS_L)
 		return ((unsigned long)nbr);
 	else if (p->f & FLAGS_J)
@@ -62,6 +62,8 @@ void		handle_uprec(t_parser *p, char *buf, int *len)
 	int		prefixlen;
 
 	prefixlen = ft_strlen(get_prefix(p, p->format));
+	if (*len == 1 && p->precision == 1 && p->f & PREFIX && p->format == 'o')
+		p->precision++;
 	while ((*len < p->precision) && (*len < BUF_SIZE))
 		buf[(*len)++] = '0';
 	if (!(p->f & LEFT_ALIGN))
@@ -100,6 +102,8 @@ int			handle_unsigned(t_parser *p, va_list args)
 	len = -1;
 	nbr = get_uint_length(p, args);
 	p->s = itoa_base_ulong(p, nbr, p->base, "0123456789abcdef");
+	if (!p->s)
+		return (-1);
 	tmp = p->s;
 	handle_nullnbr(p, nbr);
 	while (p->s[++len])

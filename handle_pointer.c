@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/20 16:00:25 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/21 14:27:47 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/03/28 15:05:56 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ int		handle_pointer(t_parser *p, va_list args)
 	len = -1;
 	pointer = va_arg(args, intmax_t);
 	p->s = itoa_base_long(p, pointer, 16, "0123456789abcdef");
+	if (!p->s)
+		return (-1);
 	while (p->s[++len])
 		buf[len] = p->s[len];
 	while (len < p->precision && len < BUF_SIZE)
