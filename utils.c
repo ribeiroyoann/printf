@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 18:08:25 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/28 17:46:50 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/04/02 16:09:42 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,12 +98,11 @@ int		get_base(t_parser *p, char c)
 		return (-1);
 }
 
-size_t	ft_wstrlen(const int *str)
+void	itoa_handlezero(t_parser *p, intmax_t nbr)
 {
-	size_t i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
+	if (nbr == 0 && p->f & ZEROPREC)
+	{
+		free(p->s);
+		p->s = "";
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 19:36:58 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/28 19:30:34 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/04/02 16:07:06 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,12 +103,7 @@ int			handle_int(t_parser *p, va_list args)
 	p->s = itoa_base_long(p, nbr, p->base, "0123456789abcdef");
 	if (!p->s)
 		return (-1);
-	if (nbr == 0 && p->f & ZEROPREC)
-	{
-		// ft_putstr("   Ok");
-		free(p->s);
-		p->s = "";
-	}
+	itoa_handlezero(p, nbr);
 	while (p->s[++len])
 		buf[len] = p->s[len];
 	handle_prec(p, buf, &len);
@@ -117,11 +112,6 @@ int			handle_int(t_parser *p, va_list args)
 	print_buffer(buf, len, &ret);
 	print_width(p, len, &ret, 1);
 	if (p->s && (!(p->f & ZEROPREC) || nbr != 0))
-	{
-		// ft_putstr("   Ok");
 		free(p->s);
-	}
 	return (ret);
 }
-
-// put p->s = "" in itoa_base = 1 seul free

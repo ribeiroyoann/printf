@@ -6,7 +6,7 @@
 #    By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/10 11:13:42 by yoribeir          #+#    #+#              #
-#    Updated: 2019/03/20 16:42:05 by yoribeir         ###   ########.fr        #
+#    Updated: 2019/04/02 16:05:11 by yoribeir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,6 +86,7 @@ FILES =	ft_memset.c \
 		ft_strrev.c \
 		ft_strjoinfree.c \
 		ft_abs.c \
+		ft_wstrlen.c \
 
 OBJ	= $(FILES:%.c=%.o)
 

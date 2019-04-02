@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_wstrlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/17 13:27:01 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/04/02 15:49:37 by yoribeir         ###   ########.fr       */
+/*   Created: 2019/04/02 16:04:26 by yoribeir          #+#    #+#             */
+/*   Updated: 2019/04/02 16:04:44 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
-#include <limits.h>
+#include "libft.h"
 
-#include <locale.h>
-#include <wchar.h>
-
-int		main(int argc, char **argv)
+size_t	ft_wstrlen(const int *str)
 {
-	ft_printf("%.d\n", 0);
-	return (0);
+	size_t i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }
