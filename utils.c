@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 18:08:25 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/04/02 16:09:42 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/04/02 16:50:52 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,8 @@ int		get_base(t_parser *p, char c)
 			p->f |= CAPSBASE;
 		return (16);
 	}
+	else if (c == 'b')
+		return (2);
 	else
 		return (-1);
 }

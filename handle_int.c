@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 19:36:58 by yoann             #+#    #+#             */
-/*   Updated: 2019/04/02 16:07:06 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/04/02 19:19:01 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void		handle_prec(t_parser *p, char *buf, int *len)
 		if (p->width && (p->f & ZERO_FILL) && (p->f & NEG
 			|| (p->f & (PLUS | SPACE))))
 			p->width--;
-		while ((p->f & ZERO_FILL) && (*len + ft_strlen(p->prefix) < p->width)
-			&& (*len < BUF_SIZE))
+		while ((*len + (int)ft_strlen(p->prefix) < p->width)
+			&& (*len < BUF_SIZE) && (p->f & ZERO_FILL))
 			buf[(*len)++] = '0';
 	}
 }

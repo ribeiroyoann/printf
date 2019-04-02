@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 16:10:34 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/21 14:08:52 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/04/02 16:50:13 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	apply_spec_flags(t_parser *p, char c)
 		p->f &= ~PREFIX;
 	if (p->f & ZEROVALUE)
 		p->f &= ~PREFIX;
-	if (c == 'x' || c == 'X' || c == 'u' || c == 'o')
+	if (c == 'x' || c == 'X' || c == 'u' || c == 'o' || c == 'b')
 		p->f |= UNSIGNED;
 	if (p->f & PRECISION && !p->precision)
 		p->f |= ZEROPREC;

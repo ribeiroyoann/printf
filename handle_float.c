@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/18 15:51:20 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/20 16:45:56 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/04/02 19:19:44 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int				calc_decimal(long double decimal, int precision, int pos)
 	return (pos);
 }
 
-long double		round_nbr(t_parser *p, long double nbr, int precision)
+long double		round_nbr(long double nbr, int precision)
 {
 	long long	integer;
 	long double	decimal;
@@ -102,7 +102,7 @@ int				handle_float(t_parser *p, va_list args)
 		nbr = va_arg(args, double);
 	if (!(p->f & PRECISION))
 		p->precision = 6;
-	nbr = round_nbr(p, nbr, p->precision);
+	nbr = round_nbr(nbr, p->precision);
 	ret = ft_print_float(p, nbr, 2);
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/21 19:09:41 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/03/15 16:31:22 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/04/02 19:19:23 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int		handle_escape(t_parser *p, va_list args)
 	int			ret;
 	int			i;
 
+	(void)args;
 	ret = 0;
 	len = 1;
 	buf[0] = '%';

@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/12 17:34:00 by yoann             #+#    #+#             */
-/*   Updated: 2019/03/26 17:34:53 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/04/02 16:49:59 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void		set_jumptable(t_jumptable handlers[128])
 	handlers['U'] = &handle_unsigned;
 	handlers['x'] = &handle_unsigned;
 	handlers['X'] = &handle_unsigned;
+	handlers['b'] = &handle_unsigned;
 	handlers['f'] = &handle_float;
 	handlers['F'] = &handle_float;
 	handlers['s'] = &handle_string;

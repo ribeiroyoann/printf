@@ -6,13 +6,13 @@
 #    By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/12/11 16:06:44 by yoribeir          #+#    #+#              #
-#    Updated: 2019/03/26 20:18:14 by yoribeir         ###   ########.fr        #
+#    Updated: 2019/04/02 19:16:19 by yoribeir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 
-# CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 SRC = ft_printf.c handlers.c parsers.c utils.c handle_int.c handle_unsigned.c \
 handle_char.c handle_pointer.c handle_escape.c handle_string.c handle_wchar.c \
 handle_float.c
