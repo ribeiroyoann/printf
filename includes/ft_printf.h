@@ -6,14 +6,14 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/11 15:57:50 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/04/02 19:00:35 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/04/03 15:49:45 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-# include "libft/libft.h"
+# include "libft.h"
 # include <stdarg.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -102,6 +102,5 @@ void			itoa_handlezero(t_parser *p, intmax_t nbr);
 char			*itoa_base_ulong(t_parser *p, uintmax_t n, int base, char *s);
 int				get_base(t_parser *p, char c);
 void			ft_putwchar(wchar_t chr);
-// size_t			ft_wstrlen(const int *str);
 
 #endif

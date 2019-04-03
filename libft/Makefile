@@ -6,7 +6,7 @@
 #    By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/09/10 11:13:42 by yoribeir          #+#    #+#              #
-#    Updated: 2019/04/02 16:05:11 by yoribeir         ###   ########.fr        #
+#    Updated: 2019/04/03 15:51:22 by yoribeir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,7 +79,6 @@ FILES =	ft_memset.c \
 		ft_lstsize.c \
 		ft_lstat.c \
 		ft_strndup.c \
-		get_next_line.c \
 		ft_strtoupper.c \
 		ft_nblen.c \
 		ft_strpbrk.c \
@@ -104,7 +103,7 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
-	@echo "\033[1;34mLibft\t\033[1;33mCleaning Lib\t\033[0;32m[OK]\033[0m"
+	@echo "\033[1;34mLibft\t\033[1;33mCleaning Lib\t\t\033[0;32m[OK]\033[0m"
 
 re: fclean all
 
