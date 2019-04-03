@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 16:29:08 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/04/02 16:05:02 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/04/03 16:50:00 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-# include "get_next_line.h"
 
 typedef struct		s_list
 {
