@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 13:27:01 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/04/03 16:33:58 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/04/04 18:46:16 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 int		main(int argc, char **argv)
 {
-    ft_printf("%2hhp\n", 18446744073709551615);
- 
+    ft_printf("my printf   :%+lld:\n", 4242424242424242424242);
+
 	return (0);
 }
