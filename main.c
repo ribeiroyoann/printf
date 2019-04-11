@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/17 13:27:01 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/04/04 18:46:16 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/04/11 17:15:18 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,12 @@
 
 int		main(int argc, char **argv)
 {
-    ft_printf("my printf   :%+lld:\n", 4242424242424242424242);
+  	 int		nb;
+
+	nb = 42;
+	ft_printf("space%10d\n", nb);
+	ft_printf("plus:%+d\n", nb);
+	ft_printf("precision:%.5d\n", nb);
 
 	return (0);
 }

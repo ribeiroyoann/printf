@@ -6,7 +6,7 @@
 /*   By: yoribeir <yoribeir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/03/08 18:08:25 by yoribeir          #+#    #+#             */
-/*   Updated: 2019/04/02 16:50:52 by yoribeir         ###   ########.fr       */
+/*   Updated: 2019/04/11 17:12:56 by yoribeir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,16 @@ char	*itoa_base_ulong(t_parser *p, uintmax_t n, int base, char *s_base)
 void	print_buffer(char *buf, int len, int *ret)
 {
 	int		i;
+	char	tmp[BUF_SIZE];
 
 	i = 0;
 	while (i < len)
 	{
-		ft_putchar(buf[len - i - 1]);
+		tmp[i] = (buf[len - i - 1]);
 		i++;
 		(*ret)++;
 	}
+	write(1, &tmp, len);
 }
 
 int		get_base(t_parser *p, char c)
